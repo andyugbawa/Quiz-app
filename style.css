@@ -8,12 +8,13 @@
 body{
     background: rgb(28, 28, 85);
 }
+
 .app{
     background: white;
-    width:60%;
-    height: 450px;
+    width:850px;
+    height: 350px;
     margin: 100px auto 0;
-    border: 3px solid black;
+    border: 6px solid orange;
     border-radius: 20px;
     padding: 10px 10px;
 
@@ -27,14 +28,21 @@ h1{
     margin-top: 30px;
 }
 .answer-buttons{
-    display: flex;
-    justify-content: center;
-    gap:6px;
+    /* justify-content: center;
+     gap:6px; */
  
 }
+.content-button{
+    display: inline-block;
+    margin: 0px 10px 50px 15px; 
+   
+
+  
+}
+
 .btn{
     margin-top: 50px;
-    width:260px;
+    width:160px;
     height: 40px;
     border-radius: 20px;
     background: rgb(0, 157, 255);
@@ -42,10 +50,11 @@ h1{
     font-size: 20px;
     cursor:pointer;
     transition: all 0.3s;
+    gap:6px;
    
 }
 .btn:hover{
-    background: rgb(17, 17, 61);
+    /* background: rgb(17, 17, 61); */
 }
 #next-btn{
     width:200px;
@@ -56,4 +65,140 @@ h1{
     background: rgb(17, 17, 61); 
     color: #fff;
     font-size: 20px;
+}
+.music{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+p{
+    font-size: 20px;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.correct{
+    background: green;
+}
+
+.para-content{
+    position: absolute;
+    bottom: 366px;
+    left: 280px;
+}
+.edit{
+    font-weight: 800;
+    color: red;
+}
+/* .count-pull{
+    position: absolute;
+    bottom: 330px;
+    left: 300px;
+} */
+
+ #countdown{
+    position: relative;
+    bottom: 189px;
+    left: 30px; 
+    color:red;
+ }
+.tag{
+    position: relative;
+    bottom: 190px;
+    left: 15px;
+    color:orangered;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+@media (max-width:768px) {
+     .app{
+        width:680px;
+        height: 400px;   
+    } 
+
+
+.para-content{
+    position: absolute;
+    bottom: 286px;
+    left: -20px;
+} 
+
+ .edit{
+    position: relative;
+    bottom: 80px;
+    left: 80px;
+ }
+
+ .tag{
+    position: relative;
+    bottom: 146px;
+    left: 20px; 
+ }
+
+ #countdown{
+    position: relative;
+    bottom: 145px;
+    left: 22px;  
+ }
+ .correct{
+    background: green;
+ }
+/* 
+.count-pull{
+    position: absolute;
+    bottom: -10px;
+    left: 560px;
+}  */
+.content-button{
+    margin: 0 0 5px 25px;
+    /* background-color: red;
+    width: 700px;
+    height: 600px; */
+}
+.btn{
+    width:130px;
+    height: 40px;
+    border-radius: 20px;
+    background: rgb(0, 157, 255);
+    color:#fff;
+    font-size: 15px;
+    cursor:pointer;
+    transition: all 0.3s;
+    gap:6px;  
+}
+   
+}
+
+@media (max-width:325px) {
+    .app{
+        max-width:50%;
+        height: 450px;
+    }
+    .para-content{
+        position: absolute;
+        bottom: -130px;
+        left: -54px;
+    }
+    .tag{
+        position: relative;
+        bottom: 220px;
+        left: 10px;
+        font-size: 18px;  
+    } 
+    #countdown{
+        position: relative;
+        bottom: 220px;
+        left: 10px;
+        font-size: 18px 
+    }
+
+
+
+    
+ .edit{
+    position: relative;
+    bottom: 80px;
+    left: 200px;
+ }
 }
