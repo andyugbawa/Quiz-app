@@ -88,6 +88,7 @@ const questions =[
 const questionMark = document.getElementById("question");
 const clipButtons = document.getElementById("answer-buttons");
 const buttonNext = document.getElementById("next-btn")
+const app = document.querySelector(".app")
 
 
 let currentQuestion = 0;
@@ -127,6 +128,8 @@ function removeSets(){
   while(clipButtons.firstChild){
     clipButtons.removeChild(clipButtons.firstChild)
   }
+  const wrongEl = document.querySelectorAll(".para-content");
+  wrongEl.forEach(element=>element.remove())
 }
 
 function pickAnswer(e){
@@ -155,28 +158,55 @@ function pickAnswer(e){
 }
 
  function listQuestion(){
-    currentQuestion++;
-    if(currentQuestion < questions.length){
-        showQuiz()
-    }else{
-        displayScore()
+    if(!scoreShown){
+        currentQuestion++;
+        if(currentQuestion < questions.length){
+            showQuiz()
+        
+        }else{
+            displayScore()
+    }
     }
  }
+
+ let scoreShown = false;
+
+
 
  function displayScore(){
     removeSets();
     questionMark.innerHTML = `You score is ${score} over ${questions.length}`;
-    buttonNext.innerHTML = "Play Again";
+    buttonNext.innerHTML = "Next";
     buttonNext.style.display = "block";
+    scoreShown = true;
+   
 
  }
 
 buttonNext.addEventListener("click",()=>{
+    
     if(currentQuestion < questions.length){
         listQuestion();
     }else{
-        startQuiz()
+        if(scoreShown){
+            hallFame()
+        }else{
+            startQuiz()
+
+        }
     }
+
+   
 })
+
+
+function hallFame(){
+    removeSets()
+    questionMark.innerHTML = "Hall of Fame" 
+    buttonNext.style.display ="block"
+    buttonNext.innerHTML ="Next"
+}
+
+
 
 startQuiz();

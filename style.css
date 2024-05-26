@@ -11,8 +11,8 @@ body{
 
 .app{
     background: white;
-    width:850px;
-    height: 350px;
+    width:90%;
+    max-width: 800px;
     margin: 100px auto 0;
     border: 6px solid orange;
     border-radius: 20px;
@@ -69,7 +69,7 @@ h1{
 .music{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 p{
     font-size: 20px;
@@ -170,28 +170,40 @@ p{
    
 }
 
-@media (max-width:325px) {
+@media (max-width:500px) {
+
+   body{
+    /* padding: 0px 0px 0px 0px;
+    height: 90px; */
+   }
     .app{
-        max-width:50%;
-        height: 450px;
+        max-width:90%;
+        height: 500px;
+        
     }
     .para-content{
         position: absolute;
-        bottom: -130px;
-        left: -54px;
+        bottom: 260px;
+        left: -23px;
     }
     .tag{
         position: relative;
-        bottom: 220px;
+        bottom: 240px;
         left: 10px;
         font-size: 18px;  
     } 
     #countdown{
         position: relative;
-        bottom: 220px;
+        bottom: 240px;
         left: 10px;
         font-size: 18px 
     }
+/* 
+    .count-pull{
+        position: relative;
+        bottom: 50px;
+        padding: 40px 0 800px 10px;
+    } */
 
 
 
@@ -201,4 +213,8 @@ p{
     bottom: 80px;
     left: 200px;
  }
+ .content-button{
+    padding: 0px 0px 0px 25px;
+ }
+
 }
