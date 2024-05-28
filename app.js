@@ -27,7 +27,7 @@ function check(){
     pContainer.classList.add("count-pull")
     const pTag = document.createElement("p")
     pTag.classList.add("tag")
-    pTag.innerText = "Timer: ";
+    pTag.innerText = "Time left: ";
     quiz.appendChild(pTag);
     quiz.append(pContainer)
     pTag.appendChild(countDownEl);
@@ -210,3 +210,10 @@ function hallFame(){
 
 
 startQuiz();
+
+// const startButton = document.querySelector("#start-btn")
+
+function mystart(){
+    window.location.href = "index2.html"
+   
+}

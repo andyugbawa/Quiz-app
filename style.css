@@ -6,15 +6,54 @@
 }
 
 body{
-    background: rgb(28, 28, 85);
+    background: rgba(3, 3, 57, 0.954);
 }
 
+.startup{
+    background: rgb(21,19,27);
+    width:70%;
+    height: 350px;
+    margin: 100px auto 0;
+    border: 2px solid orange;
+    border-radius: 20px;
+    padding: 10px 10px; 
+}
+.head-start{
+ padding: 60px 0 0 0; 
+}
+#header{
+   color:rgb(245, 184, 70); 
+}
+#computer{
+    margin: px 0 0 284px;
+    /* text-align: center; */
+
+}
+ .button-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px 0 20px;
+    gap: 10px;
+ }
+ .start-btn{
+    width:170px;
+    height: 35px;
+    background: #1e90ff;
+    border: 4px solid rgb(251, 214, 7);
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+ }
+
+
 .app{
-    background: white;
+    
+    background: rgb(21,19,27);
     width:90%;
     max-width: 800px;
     margin: 100px auto 0;
-    border: 6px solid orange;
+    border: 2px solid orange;
     border-radius: 20px;
     padding: 10px 10px;
 
@@ -26,6 +65,8 @@ h1{
  #question{
     text-align: center; 
     margin-top: 30px;
+    color: purple;
+    font-size: 15px;
 }
 .answer-buttons{
     /* justify-content: center;
@@ -100,14 +141,16 @@ p{
     position: relative;
     bottom: 189px;
     left: 30px; 
-    color:red;
+    color:blue;
+    font-size: 15px;
+    
  }
 .tag{
     position: relative;
     bottom: 190px;
     left: 15px;
     color:orangered;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 700;
 }
 
