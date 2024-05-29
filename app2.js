@@ -1,61 +1,61 @@
-const questionMark = document.getElementById("question");
-const clipButtons = document.getElementById("answer-buttons");
+const startBtn = document.querySelector(".start-btn");
+const hallBtn = document.getElementById("hall-btn");
+const header = document.querySelector("#header");
+const presentScore = document.getElementById("present-score")
+const clipButtons = document.getElementById("answer-button")
 const buttonNext = document.getElementById("next-btn")
-const app = document.querySelector(".app");
-
 
 import {questions} from "./script.js"
 
-const startingMinutes  = 1;
-let time = startingMinutes *60;
+startBtn.addEventListener("click", startQuiz)
 
-const countDownEl = document.getElementById("countdown")
-
-setInterval(updateCountDown,1000)
-function updateCountDown(){
-   
- const minutes = Math.floor(time / 60);
- let seconds = time % 60;
- countDownEl.innerHTML = `${minutes} ${seconds}`
-
- seconds = seconds < 1 ? "0" -seconds : seconds
-
-    time--
-
-    if (time < 0) {
-        time = startingMinutes * 60; 
-    }
-
-    
-}
-
-const quiz = document.querySelector(".quiz")
-function check(){
-    const pContainer = document.createElement("div")
-    pContainer.classList.add("count-pull")
-    const pTag = document.createElement("p")
-    pTag.classList.add("tag")
-    pTag.innerText = "Time left: ";
-    quiz.appendChild(pTag);
-    quiz.append(pContainer)
-    pTag.appendChild(countDownEl);
-    pContainer.append(pTag)
-    pContainer.append(countDownEl) 
+function startQuiz(){
+//   window.location.href = "index2.html"
+hallBtn.style.display = "none"
+header.style.display = "none"
+startBtn.style.display = "none"
+presentScore.style.display = "block"
+// clipButtons.style.display = "block"
+nameQuiz();
+showQuiz();
+removeSets();
+pickAnswer(e);
+listQuestion();
+displayScore();
 
 }
-
-check()
 
 
 let currentQuestion = 0;
 let score = 0;
 
-function startQuiz(){
+
+function nameQuiz(){
     currentQuestion = 0;
     score = 0;
     buttonNext.innerHTML = "Next"
     showQuiz();
 }
+
+
+
+buttonNext.addEventListener("click",()=>{
+    
+    if(currentQuestion < questions.length){
+        listQuestion();
+    }else{
+        if(scoreShown){
+            hallFame()
+        }else{
+            startQuiz()
+
+        }
+    }
+
+   
+})
+
+
 
 function showQuiz(){
     removeSets();
@@ -79,15 +79,18 @@ function showQuiz(){
     });
 }
 
-function removeSets(){
-  buttonNext.style.display = "none";
-  while(clipButtons.firstChild){
-    clipButtons.removeChild(clipButtons.firstChild)
-  }
-  const wrongEl = document.querySelectorAll(".para-content");
-  wrongEl.forEach(element=>element.remove())
-}
 
+
+function removeSets(){
+    buttonNext.style.display = "none";
+    while(clipButtons.firstChild){
+      clipButtons.removeChild(clipButtons.firstChild)
+    }
+    const wrongEl = document.querySelectorAll(".para-content");
+    wrongEl.forEach(element=>element.remove())
+  }
+
+  
 function pickAnswer(e){
     const choiceBtn = e.target;
     const par = document.createElement("p")
@@ -114,8 +117,7 @@ function pickAnswer(e){
 }
 
 
-
- function listQuestion(){
+function listQuestion(){
     if(!scoreShown){
         currentQuestion++;
         if(currentQuestion < questions.length){
@@ -129,8 +131,7 @@ function pickAnswer(e){
 
  let scoreShown = false;
 
-
-
+ 
  function displayScore(){
     removeSets();
     questionMark.innerHTML = `You score is ${score} over ${questions.length}`;
@@ -141,44 +142,8 @@ function pickAnswer(e){
 
  }
 
-buttonNext.addEventListener("click",()=>{
-    
-    if(currentQuestion < questions.length){
-        listQuestion();
-    }else{
-        if(scoreShown){
-            hallFame()
-        }else{
-            startQuiz()
-
-        }
-    }
-
-   
-})
-
-
-function hallFame(){
-    removeSets()
-    questionMark.innerHTML = "Hall of Fame" 
-    buttonNext.style.display ="block"
-    buttonNext.innerHTML ="Next"
-}
+ 
 
 
 
-startQuiz();
 
-const startButton = document.querySelector(".start-btn")
-console.log(startButton)
-
-startButton.addEventListener("click",()=>{
-    console.log("Hello")
-})
-
- startButton.addEventListener("click",)
-
-function mystart(){
-    window.location.href = "index2.html"
-   
-}

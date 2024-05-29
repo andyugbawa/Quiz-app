@@ -7,17 +7,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
-    <div class="startup">
-        <div class="head-start">
-            
-            <div class="present-content">
-                <p id="present-score">Present Score :0</p>
-            </div>
-            <div class="down">
-                <h1 id="header">Quiz Category :<br>Computer</h1>
-            </div>
-        </div>
+
+    <div class="app">
+     <h1>Quiz</h1>
+     <div class="quiz">
+        <p id="countdown"></p>
         <h2 id="question">Question goes here</h2>
         <div id="answer-buttons">
             <button class="btn">Answer1</button>
@@ -25,25 +19,16 @@
             <button class="btn">Answer3</button>
             <button class="btn">Answer4</button>
         </div>
-       
-
-        <div class="button-content">
-            <a id="cta" href="#"><button class="start-btn">let's play!</button></a>
-            <button class="start-btn"  id="hall-btn">Hall of Fame!</button>
-        </div>
-
-
+        <button id="next-btn">Next</button>
+     </div>
     </div>
-
-    <button id="next-btn">Next</button>
-    
-
     <div class="music">
         <audio controls >
           <source src="all-about-you-visualizer.mp3">
         </audio>
     </div>
-
- <script type="module" src="./app2.js"></script>
+   
+    
+    <script type="module" src="./app.js"></script>
 </body>
 </html>
