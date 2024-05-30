@@ -1,37 +1,71 @@
 *{
     margin:0;
     padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
+
 }
 
 body{
-    background: rgba(3, 3, 57, 0.954);
+    background: rgba(3, 3, 57, 0.954); 
 }
 
 
-.app{
-    
+
+
+
+
+
+.down{
+    /* padding-bottom: 240px; */
+}
+
+.startup{
     background: rgb(21,19,27);
-    width:90%;
+    width:70%;
     max-width: 800px;
-    /* min-height: 600px; */
     margin: 100px auto 0;
     border: 2px solid orange;
     border-radius: 20px;
-    padding: 10px 10px;
+    padding: 10px 10px; 
+}
+.head-start{
+ padding: 30px 0 0px 0; 
+}
+#header{
+   color:rgb(245, 184, 70); 
+}
+#computer{
+    /* margin: 0px 0 0 284px; */
+    /* text-align: center; */
 
 }
-h1{
-    margin: 25px auto 0;
+ .button-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px 0 20px;
+    gap: 10px;
+ }
+ .start-btn{
+    width:170px;
+    height: 35px;
+    background: #1e90ff;
+    border: 4px solid rgb(251, 214, 7);
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+ }
+
+ #present-score{
+    color:#fff;
     text-align: center;
-}
+ }
  #question{
     text-align: center; 
     /* margin-top: 30px; */
     color: purple;
     font-size: 15px;
 }
+
 
 #answer-buttons{
     /* justify-content: center;
@@ -43,10 +77,9 @@ h1{
     display: inline-block;
     margin: 0px 10px 50px 15px; 
     display: none;
-   
-
-  
 }
+
+
 
 .btn{
     margin-top: 50px;
@@ -133,110 +166,4 @@ p{
 }
 
 
-@media (max-width:768px) {
-     .app{
-        width:680px;
-        height: 400px;   
-    } 
 
-
-.para-content{
-    position: absolute;
-    bottom: 286px;
-    left: -20px;
-} 
-
- .edit{
-    position: relative;
-    bottom: 80px;
-    left: 80px;
- }
-
- .tag{
-    position: relative;
-    bottom: 146px;
-    left: 20px; 
- }
-
- #countdown{
-    position: relative;
-    bottom: 145px;
-    left: 22px;  
- }
- .correct{
-    background: green;
- }
-/* 
-.count-pull{
-    position: absolute;
-    bottom: -10px;
-    left: 560px;
-}  */
-.content-button{
-    margin: 0 0 5px 25px;
-    /* background-color: red;
-    width: 700px;
-    height: 600px; */
-}
-.btn{
-    width:130px;
-    height: 40px;
-    border-radius: 20px;
-    background: rgb(0, 157, 255);
-    color:#fff;
-    font-size: 15px;
-    cursor:pointer;
-    transition: all 0.3s;
-    gap:6px;  
-}
-   
-}
-
-@media (max-width:500px) {
-
-   body{
-    /* padding: 0px 0px 0px 0px;
-    height: 90px; */
-   }
-    .app{
-        max-width:90%;
-        height: 500px;
-        
-    }
-    .para-content{
-        position: absolute;
-        bottom: 260px;
-        left: -23px;
-    }
-    .tag{
-        position: relative;
-        bottom: 240px;
-        left: 10px;
-        font-size: 18px;  
-    } 
-    #countdown{
-        position: relative;
-        bottom: 240px;
-        left: 10px;
-        font-size: 18px 
-    }
-/* 
-    .count-pull{
-        position: relative;
-        bottom: 50px;
-        padding: 40px 0 800px 10px;
-    } */
-
-
-
-    
- .edit{
-    position: relative;
-    bottom: 80px;
-    left: 200px;
- }
- .content-button{
-    padding: 0px 0px 0px 25px;
- }
-
-}

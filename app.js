@@ -5,6 +5,7 @@ const app = document.querySelector(".app");
 
 
 import {questions} from "./script.js"
+console.log(questions)
 
 const startingMinutes  = 1;
 let time = startingMinutes *60;
