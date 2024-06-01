@@ -23,14 +23,14 @@ function startQuiz() {
     startBtn.style.display = "none";
     presentScore.style.display = "block";
     nameQuiz();
-    displayScore();
     listQuestion();
+    // displayScore();
 }
 
 function nameQuiz() {
     currentQuestion = 0;
     score = 0;
-    scoreShown = true;
+    scoreShown = false;
     buttonNext.innerHTML = "Next";
     showQuiz();
 }
@@ -103,7 +103,7 @@ buttonNext.addEventListener("click", () => {
 
 function listQuestion() {
     if (!scoreShown) {
-        currentQuestion++;
+        // currentQuestion++;
         if (currentQuestion < questions.length) {
             showQuiz();
         } else {
