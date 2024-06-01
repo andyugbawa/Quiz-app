@@ -7,68 +7,52 @@ const buttonNext = document.getElementById("next-btn");
 const questionMark = document.getElementById("question-mark");
 const quiz = document.querySelector(".startup");
 
+
 import { questions } from "./script.js";
-console.log(questions)
+console.log(questions);
 
 startBtn.addEventListener("click", startQuiz);
 
-function startQuiz() {
+let currentQuestion = 0;
+let score = 0;
+let scoreShown = false;
 
-    // console.log("startQuiz function called");
+function startQuiz() {
     hallBtn.style.display = "none";
     header.style.display = "none";
     startBtn.style.display = "none";
     presentScore.style.display = "block";
     nameQuiz();
-    showQuiz();
-    removeSets();
-    listQuestion();
     displayScore();
+    listQuestion();
 }
 
-
-
-let currentQuestion = 0;
-let score = 0;
-
 function nameQuiz() {
-    // console.log("nameQuiz function called");
     currentQuestion = 0;
     score = 0;
+    scoreShown = true;
     buttonNext.innerHTML = "Next";
     showQuiz();
 }
 
-
-
-buttonNext.addEventListener("click", () => {
-    if (currentQuestion < questions.length) {
-        listQuestion();
-    } else {
-        if (scoreShown) {
-            hallFame();
-        } else {
-            startQuiz();
-        }
-    }
-});
-
 function showQuiz() {
     removeSets();
-    let incrementQuiz = questions[currentQuestion];
-    let questionNum = currentQuestion + 1;
-    questionMark.innerHTML = questionNum + ". " + incrementQuiz.question;
+    
+        let incrementQuiz = questions[currentQuestion];
+        let questionNum = currentQuestion + 1;
+        questionMark.innerHTML = questionNum + ". " + incrementQuiz.question;
 
-    incrementQuiz.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("btn");
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", pickAnswer);
-        clipButtons.appendChild(button);
-    });
+        incrementQuiz.answers.forEach(answer => {
+            const button = document.createElement("button");
+            button.innerHTML = answer.text;
+            button.classList.add("btn");
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener("click", pickAnswer);
+            clipButtons.appendChild(button);
+        });
+    
 }
 
 function removeSets() {
@@ -91,19 +75,31 @@ function pickAnswer(e) {
         choiceBtn.classList.add("correct");
         score++;
     } else {
+        choiceBtn.classList.add("incorrect");
         par.innerHTML = "Wrong Answer";
+        contentPar.append(par);
+        quiz.appendChild(contentPar);
     }
-    contentPar.append(par);
-    quiz.appendChild(contentPar);
 
     Array.from(clipButtons.children).forEach(button => {
         if (button.dataset.correct === "true") {
-            button.classList.add("button");
+            button.classList.add("correct");
         }
-        button.disabled = true; // Correct way to disable a button
+        button.disabled = true;
     });
     buttonNext.style.display = "block";
 }
+
+buttonNext.addEventListener("click", () => {
+    if (currentQuestion < questions.length) {
+        currentQuestion++;
+        showQuiz();
+    } else {
+        displayScore();
+        buttonNext.innerHTML = "Next";
+        buttonNext.addEventListener("click", startQuiz);
+    }
+});
 
 function listQuestion() {
     if (!scoreShown) {
@@ -116,7 +112,6 @@ function listQuestion() {
     }
 }
 
-let scoreShown = false;
 
 function displayScore() {
     removeSets();
@@ -126,24 +121,9 @@ function displayScore() {
     scoreShown = true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function hallFame() {
+    // Logic to show hall of fame or reset the quiz
+}
 
 
 
