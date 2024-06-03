@@ -161,17 +161,16 @@ function displayScore() {
 }
 
 musicBtn.addEventListener("click",()=>{
-    if(songEl === "./music/1-01. Title Theme [CPS-1].mp3" ){
         if(musicBtn === "#1e90ff"){
             musicBtn.innerText = "switch background music 1 "
             musicBtn.style.backgroundColor = "#1e90ff";
-            songEl.src = "./music/1-01. Title Theme [CPS-1].mp3"
+            // songEl.src = "./music/1-01. Title Theme [CPS-1].mp3"
         }else{
             musicBtn.innerText = "switch background music 2 "
             musicBtn.style.backgroundColor = "pink";
-            songEl.src = "./music/05. Ken Stage.mp3" 
+            // songEl.src = "./music/05. Ken Stage.mp3" 
         }
-    }
+    
 })
 
 
