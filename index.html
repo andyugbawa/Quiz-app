@@ -15,9 +15,15 @@
             <div class="present-content">
                 <p id="present-score" style="display: none;">Present Score: 0</p>
             </div>
+            <div class="count-timer">
+             <p id="time-piece">Time-Left:<span id="timer"></span></p>
+            </div>
             <div class="down">
                 <h1 id="header">Quiz Category:<br>Computer</h1>
             </div>
+        </div>
+        <div id="question-shuffle">
+            <p id="shuffle">QUESTION 1 0f 10 shuffled from 50</p>
         </div>
         <h2 id="question-mark"></h2>
         <div id="answer-buttons">
@@ -33,40 +39,12 @@
         <button id="next-btn" style="display: none;">Next</button>
     </div>
     
-    
-    <!-- <div class="startup">
-        <div class="head-start">
-            
-            <div class="present-content">
-                <p id="present-score">Present Score :0</p>
-            </div>
-            <div class="down">
-                <h1 id="header">Quiz Category :<br>Computer</h1>
-            </div>
-        </div>
-        <h2 id="question">Question goes here</h2>
-        <div id="answer-buttons">
-            <button class="btn">Answer1</button>
-            <button class="btn">Answer2</button>
-            <button class="btn">Answer3</button>
-            <button class="btn">Answer4</button>
-        </div>
-       
-
-        <div class="button-content">
-            <a id="cta" href="#"><button class="start-btn">let's play!</button></a>
-            <button class="start-btn"  id="hall-btn">Hall of Fame!</button>
-        </div>
-
-        <button id="next-btn">Next</button>
-
-    </div> -->
-
-    
-
-    <div class="music">
+   
+     <button id="music-btn">Switch background music 1</button>
+    <div class="music" autoplay>
         <audio controls >
-          <source src="all-about-you-visualizer.mp3">
+          <source id="song" src="./music/05. Ken Stage.mp3">
+          <source src="./music/1-01. Title Theme [CPS-1].mp3">
         </audio>
     </div>
 

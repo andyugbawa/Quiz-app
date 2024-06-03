@@ -23,7 +23,7 @@ body{
     width:70%;
     max-width: 750px;
     /* height: 750px; */
-    margin: 100px auto 0;
+    margin: 90px auto 0;
     border: 2px solid orange;
     border-radius: 20px;
     padding: 10px 10px; 
@@ -182,9 +182,47 @@ p{
 
 #question-mark{
     position: relative;
-    left:250px;
-    bottom:150px;
+    left:140px;
+    bottom:100px;
     color: rgb(152, 98, 163);
+}
+.count-timer{
+    position: absolute;
+    bottom: 410px;
+    left:630px;
+}
+#time-piece{
+    display: none;
+    background: blue;
+    color: rgb(72, 232, 82);
+    width:150px;
+    height: 20px;
+    padding-left: 8px;
+    border-radius: 20px;
+    font-size: 18px;
+}
+#timer{
+    position: relative;
+    bottom: 20px;
+    left: 84px;
+}
+#music-btn{
+    position: relative;
+    top: 7px;
+    left:570px;
+    width:220px;
+    padding: 4px 2px  4px 20px;
+    background-color: #1e90ff;
+}
+#shuffle{
+    display: none;
+    font-size: 15px;
+    color: orange;
+}
+#question-shuffle{
+    position: absolute;
+    bottom: 350px;
+    left:450px;
 }
 
 
