@@ -106,6 +106,8 @@ function removeSets() {
 function pickAnswer(e) {
     const choiceBtn = e.target;
     const par = document.createElement("p");
+    const par1 =document.createElement("p")
+    par1.classList.add("good")
     par.classList.add("edit");
     const contentPar = document.createElement("div");
     contentPar.classList.add("para-content");
@@ -113,12 +115,17 @@ function pickAnswer(e) {
     if (letCorrect) {
         choiceBtn.classList.add("correct");
         score++;
+        par1.innerHTML = "Good Job";
+        contentPar.append(par1);
     } else {
         choiceBtn.classList.add("incorrect");
         par.innerHTML = "Wrong Answer";
         contentPar.append(par);
-        quiz.appendChild(contentPar);
+        
     }
+
+    quiz.appendChild(contentPar);
+    
 
     Array.from(clipButtons.children).forEach(button => {
         if (button.dataset.correct === "true") {
@@ -128,6 +135,10 @@ function pickAnswer(e) {
     });
     buttonNext.style.display = "block";
 }
+
+
+
+
 
 buttonNext.addEventListener("click", () => {
     if (currentQuestion < questions.length) {

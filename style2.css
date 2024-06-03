@@ -142,8 +142,22 @@ p{
     left: 280px;
 }
 .edit{
+    position: relative;
+    left:350px;
+    bottom: 10px;
     font-weight: 800;
     color: red;
+    font-size: 25px;
+    
+}
+
+.good{
+    position: relative;
+    left:380px;
+    bottom: 10px;
+    font-weight: 800;
+    color:blue;
+    font-size: 25px;  
 }
 /* .count-pull{
     position: absolute;
