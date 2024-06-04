@@ -12,7 +12,7 @@ const countEl = document.getElementById("timer");
 const shuffleEl = document.getElementById("shuffle");
 // const questionShuffle = document.getElementById("question-shuffle")YET TO EXECUTE THIS FUNCTION.
 const musicBtn = document.getElementById("music-btn")
-const songEl = document.getElementById("song")
+
 
 
 const startTiming = 1;
@@ -115,11 +115,11 @@ function pickAnswer(e) {
     if (letCorrect) {
         choiceBtn.classList.add("correct");
         score++;
-        par1.innerHTML = "Good Job";
+        par1.innerHTML = "Good Job 😎 🎉";
         contentPar.append(par1);
     } else {
         choiceBtn.classList.add("incorrect");
-        par.innerHTML = "Wrong Answer";
+        par.innerHTML = "Oops Wrong Answer 😐";
         contentPar.append(par);
         
     }
@@ -171,68 +171,36 @@ function displayScore() {
     scoreShown = true;
 }
 
-musicBtn.addEventListener("click",()=>{
-        if(musicBtn === "#1e90ff"){
-            musicBtn.innerText = "switch background music 1 "
-            musicBtn.style.backgroundColor = "#1e90ff";
-            // songEl.src = "./music/1-01. Title Theme [CPS-1].mp3"
-        }else{
-            musicBtn.innerText = "switch background music 2 "
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const musicBtn = document.getElementById("music-btn");
+    const song1 = document.getElementById("song1");
+    const song2 = document.getElementById("song2");
+
+    // Initially play song1
+    song1.play();
+
+    musicBtn.addEventListener("click", () => {
+        if (musicBtn.innerText === "Switch background music 1") {
+            musicBtn.innerText = "Switch background music 2";
             musicBtn.style.backgroundColor = "pink";
-            // songEl.src = "./music/05. Ken Stage.mp3" 
+            
+            
+            song1.pause();
+            song1.currentTime = 0;
+            song2.play();
+        } else {
+            musicBtn.innerText = "Switch background music 1";
+            musicBtn.style.backgroundColor = "#1e90ff";
+            
+        
+            song2.pause();
+            song2.currentTime = 0;
+            song1.play();
         }
-    
-})
-
-
-
-
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     let currentMusicIndex = 0;
-//     const musicSources = [
-//         "./music/05. Ken Stage.mp3",
-//         "./music/1-01. Title Theme [CPS-1].mp3"
-//     ];
-
-//     document.querySelector(".music-btn").addEventListener("click", switchMusic);
-
-//     function switchMusic() {
-//         currentMusicIndex = (currentMusicIndex + 1) % musicSources.length;
-//         const audioElement = document.getElementById('background-music');
-//         audioElement.src = musicSources[currentMusicIndex];
-//         audioElement.play();
-//     }
-// });
-
-
-// let currentMusicIndex = 0;
-//         const musicSources = [
-//             "05. Ken Stage.mp3",
-//             "1-01. Title Theme [CPS-1].mp3"
-//         ];
-
-//         function switchMusic() {
-//             currentMusicIndex = (currentMusicIndex + 1) % musicSources.length;
-//             const audioElement = document.getElementById('background-music');
-//             audioElement.src = musicSources[currentMusicIndex];
-//             audioElement.play();
-//         }
-//         switchMusic();
-
-// function hallFame() {
-//     // Logic to show hall of fame or reset the quiz
-// }
-
-
-
-
-
-
-
-
-
+    });
+});
 
 
 
