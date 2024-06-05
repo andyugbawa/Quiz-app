@@ -21,7 +21,7 @@ body{
 .startup{
     background: rgb(21,19,27);
     width:70%;
-    max-width: 750px;
+    max-width: 898px;
     /* height: 750px; */
     margin: 90px auto 0;
     border: 2px solid orange;
@@ -98,7 +98,7 @@ body{
     border-radius: 20px;
     background: rgb(0, 157, 255);
     color:#fff;
-    font-size: 20px;
+    font-size: 14px;
     cursor:pointer;
     transition: all 0.3s;
     gap:20px;
@@ -200,6 +200,8 @@ p{
     left:140px;
     bottom:100px;
     color: rgb(152, 98, 163);
+    font-size: 20px;
+
 }
 .count-timer{
     position: absolute;
@@ -237,7 +239,18 @@ p{
 #question-shuffle{
     position: absolute;
     bottom: 350px;
-    left:450px;
+    left:360px;
+}
+
+.time-cont{
+    width: 150px;
+    height: 60px;
+    background: red;
+}
+
+.time-up{
+    color:#fff;
+    font-size: 25px;
 }
 
 

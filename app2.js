@@ -10,16 +10,36 @@ const timerEl = document.querySelector("#timer");
 const timePeace = document.getElementById("time-piece");
 const countEl = document.getElementById("timer");
 const shuffleEl = document.getElementById("shuffle");
-// const questionShuffle = document.getElementById("question-shuffle")YET TO EXECUTE THIS FUNCTION.
-const musicBtn = document.getElementById("music-btn")
+const questionShuffle = document.getElementById("question-shuffle")
+const musicBtn = document.getElementById("music-btn");
+const headTimer = document.querySelector(".count-timer")
 
 
 
-const startTiming = 1;
+
+const audioPlayer = document.getElementById("audio-player");
+const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
+const song2Src = "./music/05. Ken Stage.mp3";
+
+
+const startTiming = 15 / 60;
 let time = startTiming *60;
+let timerInterval;
+
+function startTimer(){
+    timerInterval = setInterval (updateCount, 1000)
+}
+
+function pauseTimer(){
+    clearInterval(timerInterval)
+}
+
+function resumeTimer(){
+    startTimer()
+}
 
 
- setInterval (updateCount, 1000)
+ 
 
 function updateCount(){
 
@@ -34,13 +54,30 @@ function updateCount(){
 
     }else{
         time = startTiming *60
+        timeIsUp()
+        pauseTimer();
+    }
+}
+
+function timeIsUp(){
+    const timeIsUpElement = document.createElement("p")
+    timeIsUpElement.classList.add("time-up")
+    timeIsUpElement.textContent = "Time is up"
+    headTimer.appendChild(timeIsUpElement)
+    if(time === 0){
+        timeIsUpElement.style.display ="block"
+    }else{
+        timeIsUpElement.style.display = "none"
     }
 }
 
 
 
+
+
+
 import { questions } from "./script.js";
-console.log(questions);
+// console.log(questions);
 
 
 
@@ -63,6 +100,20 @@ function startQuiz() {
     shuffleEl.style.display = "block";
     nameQuiz();
     listQuestion();
+    
+    audioPlayer.src = song1Src;
+    audioPlayer.play();
+
+    currentQuestionNumber = 0;
+    
+    displayQuestionNumber();
+
+    startTimer();
+    timeIsUp()
+
+
+    // song1.play();
+
     // displayScore();
 }
 
@@ -74,8 +125,12 @@ function nameQuiz() {
     showQuiz();
 }
 
+let currentQuestionNumber = 0;
+
 function showQuiz() {
+    currentQuestionNumber++;
     removeSets();
+    displayQuestionNumber();
     
         let incrementQuiz = questions[currentQuestion];
         let questionNum = currentQuestion + 1;
@@ -104,6 +159,7 @@ function removeSets() {
 }
 
 function pickAnswer(e) {
+    pauseTimer()
     const choiceBtn = e.target;
     const par = document.createElement("p");
     const par1 =document.createElement("p")
@@ -143,6 +199,7 @@ function pickAnswer(e) {
 buttonNext.addEventListener("click", () => {
     if (currentQuestion < questions.length) {
         currentQuestion++;
+        resumeTimer()
         showQuiz();
     } else {
         displayScore();
@@ -175,32 +232,38 @@ function displayScore() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const musicBtn = document.getElementById("music-btn");
-    const song1 = document.getElementById("song1");
-    const song2 = document.getElementById("song2");
-
-    // Initially play song1
-    song1.play();
-
     musicBtn.addEventListener("click", () => {
         if (musicBtn.innerText === "Switch background music 1") {
             musicBtn.innerText = "Switch background music 2";
             musicBtn.style.backgroundColor = "pink";
             
             
-            song1.pause();
-            song1.currentTime = 0;
-            song2.play();
+            audioPlayer.src = song2Src;
+            audioPlayer.currentTime = 0; 
+            audioPlayer.play();
+
+
+            
         } else {
             musicBtn.innerText = "Switch background music 1";
             musicBtn.style.backgroundColor = "#1e90ff";
             
+
+            audioPlayer.src = song1Src;
+            audioPlayer.currentTime = 0; 
+            audioPlayer.play();
         
-            song2.pause();
-            song2.currentTime = 0;
-            song1.play();
         }
     });
 });
+
+
+function displayQuestionNumber() {
+    const shuffleElement = document.getElementById("shuffle");
+    shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length} shuffled from 50`;
+}
+
+
 
 
 
