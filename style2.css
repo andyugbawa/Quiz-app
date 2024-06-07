@@ -208,6 +208,7 @@ p{
     bottom: 410px;
     left:630px;
 }
+
 #time-piece{
     display: none;
     background: blue;
@@ -217,11 +218,14 @@ p{
     padding-left: 8px;
     border-radius: 20px;
     font-size: 18px;
+
 }
 #timer{
     position: relative;
     bottom: 20px;
     left: 84px;
+    
+    
 }
 #music-btn{
     position: relative;

@@ -492,6 +492,7 @@ export{questions}
 
 
 
+
 // function showQuiz() {
 //     // Increment the current question number
 //     currentQuestionNumber++;
