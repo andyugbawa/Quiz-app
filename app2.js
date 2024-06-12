@@ -1,7 +1,7 @@
 import { questions } from "./question.js";
 // console.log(questions);
 
-// Elements and variables
+
 const startBtn = document.querySelector(".start-btn");
 const hallBtn = document.getElementById("hall-btn");
 const header = document.querySelector("#header");
@@ -27,12 +27,12 @@ let time = 15;
 let timerInterval = null;
 let currentQuestionNumber = 0;
 
-// Event listener
+
 startBtn.addEventListener("click", startQuiz);
 
-// Start Quiz function
+
 function startQuiz() {
-    // Hide or show relevant elements
+    
     hallBtn.style.display = "none";
     header.style.display = "none";
     startBtn.style.display = "none";
@@ -40,30 +40,30 @@ function startQuiz() {
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
 
-    // Initialize Quiz State
+    
     currentQuestion = 0;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
 
-    // Start the first question and timer
+
     showQuiz();
     startTimer();
-    pauseTimer();
+
 }
 
-// Show Quiz function
+
 function showQuiz() {
     removeSets();
     displayQuestionNumber();
 
     if (currentQuestion < questions.length) {
-        // Display the current question
+        
         let incrementQuiz = questions[currentQuestion];
         let questionNum = currentQuestion + 1;
         questionMark.innerHTML = questionNum + ". " + incrementQuiz.question;
 
-        // Display the answers
+        
         incrementQuiz.answers.forEach(answer => {
             const button = document.createElement("button");
             button.innerHTML = answer.text;
@@ -75,11 +75,11 @@ function showQuiz() {
             clipButtons.appendChild(button);
         });
 
-        // Start the timer
+        
         startTimer();
         resumeTimer()
     } else {
-        // If no more questions, show the score
+        
         displayScore();
     }
 }
@@ -105,8 +105,8 @@ function showQuiz() {
     
 function resumeTimer(){
     // startTimer()
-    clearInterval(timerInterval); // Clear any existing interval
-    time = 15; // Reset time to 15 seconds
+    clearInterval(timerInterval); 
+    time = 15; 
     timePiece.innerHTML = "Time-left :" + time;
 };
 
@@ -116,7 +116,7 @@ function pauseTimer(){
 }
 
 
-// Remove previous question elements
+
 function removeSets() {
     buttonNext.style.display = "none";
     while (clipButtons.firstChild) {
@@ -161,7 +161,7 @@ function pickAnswer(e) {
     resumeTimer();
  
     
-    // Disable buttons and highlight correct answer
+    
     Array.from(clipButtons.children).forEach(button => {
         if (button.dataset.correct === "true") {
             button.classList.add("correct");
@@ -193,7 +193,7 @@ buttonNext.addEventListener("click", () => {
         displayScore();
         buttonNext.innerHTML = "Next";
         buttonNext.addEventListener("click", startQuiz);
-       pauseTimer();
+    //    pauseTimer();
     }
    
 });
