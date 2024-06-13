@@ -6,8 +6,8 @@ const startBtn = document.querySelector(".start-btn");
 const hallBtn = document.getElementById("hall-btn");
 const header = document.querySelector("#header");
 const presentScore = document.getElementById("present-score");
-const clipButtons = document.getElementById("answer-buttons");
-const buttonNext = document.getElementById("next-btn");
+const answerButtons = document.getElementById("answer-buttons");
+const nextBtn = document.getElementById("next-btn");
 const questionMark = document.getElementById("question-mark");
 const quiz = document.querySelector(".startup");
 let timePiece = document.getElementById("time-piece");
@@ -20,15 +20,15 @@ const audioPlayer = document.getElementById("audio-player");
 const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
 const song2Src = "./music/05. Ken Stage.mp3";
 
+
+
 let currentQuestion = 0;
 let score = 0;
 let scoreShown = false;
 let time = 15;
 let timerInterval = null;
 let currentQuestionNumber = 0;
-
-
-startBtn.addEventListener("click", startQuiz);
+let myTime;
 
 
 function startQuiz() {
@@ -39,6 +39,7 @@ function startQuiz() {
     presentScore.style.display = "block";
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
+    nextBtn.style.display  = "none"
 
     
     currentQuestion = 0;
@@ -51,6 +52,11 @@ function startQuiz() {
     startTimer();
 
 }
+
+
+startBtn.addEventListener("click", startQuiz);
+
+
 
 
 function showQuiz() {
@@ -72,12 +78,12 @@ function showQuiz() {
                 button.dataset.correct = answer.correct;
             }
             button.addEventListener("click", pickAnswer);
-            clipButtons.appendChild(button);
+            answerButtons.appendChild(button);
         });
 
         
         startTimer();
-        resumeTimer()
+    
     } else {
         
         displayScore();
@@ -88,27 +94,64 @@ function showQuiz() {
     function startTimer(){
         time--;
         timePiece.innerHTML = "Time-left :" + time;
+      
     }
 
-    let myTime =setInterval(function(){
+
+    myTime = setInterval(andy,1000);
+    function andy(){
         startTimer()
-        // time--;
-        // timePiece.innerHTML = "Time-left :" + time;
+        
         if(time === 0){
             clearInterval(myTime);
-            timePiece.innerHTML = "Oops Times Up"
-            buttonNext.style.display = "block"
+            timePiece.innerHTML = "Oops Times Up 😐"
+            
+            nextBtn.style.display = "block";
+            Array.from(answerButtons.children).forEach(button => {
+                if (button.dataset.correct === "true") {
+                    button.classList.add("correct");
+                    }else{
+                    button.classList.add("incorrect");
+    
+                }
+                button.disabled = true;
+            });
         }
 
-    },1000);
+    }
 
     
 function resumeTimer(){
     // startTimer()
-    clearInterval(timerInterval); 
+    // clearInterval(timerInterval); 
     time = 15; 
     timePiece.innerHTML = "Time-left :" + time;
+     myTime = setInterval(atase,1000);
+    
+    
 };
+
+function atase(){
+    time--;
+    timePiece.innerHTML = "Time-left :" + time;
+    if(time === 0){
+        clearInterval(myTime)
+         timePiece.innerHTML = "Oops Times Up 😐"
+         nextBtn.style.display = "block"
+        Array.from(answerButtons.children).forEach(button => {
+            if (button.dataset.correct === "true") {
+                button.classList.add("correct");
+            }else{
+                button.classList.add("incorrect");
+
+            }
+            button.disabled = true;
+        });
+    }
+
+    
+    
+ }
 
 function pauseTimer(){
     clearInterval(timerInterval)
@@ -118,9 +161,9 @@ function pauseTimer(){
 
 
 function removeSets() {
-    buttonNext.style.display = "none";
-    while (clipButtons.firstChild) {
-        clipButtons.removeChild(clipButtons.firstChild);
+    nextBtn.style.display = "none";
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
     }
     const wrongEl = document.querySelectorAll(".para-content");
     wrongEl.forEach(element => element.remove());
@@ -145,7 +188,7 @@ function pickAnswer(e) {
     if (letCorrect) {
         choiceBtn.classList.add("correct");
         score++;
-        par1.innerHTML = "Good Job 😎 🎉";
+        par1.innerHTML = "Good Job 😎 🎉🎖️";
         contentPar.append(par1);
         
     } else {
@@ -157,12 +200,14 @@ function pickAnswer(e) {
 
     quiz.appendChild(contentPar);
 
-    pauseTimer();
-    resumeTimer();
+    // pauseTimer();
+     clearInterval(myTime);
+     
+    
  
     
     
-    Array.from(clipButtons.children).forEach(button => {
+    Array.from(answerButtons.children).forEach(button => {
         if (button.dataset.correct === "true") {
             button.classList.add("correct");
         }
@@ -171,7 +216,7 @@ function pickAnswer(e) {
     
     scoreFacts();
    
-    buttonNext.style.display = "block";
+    nextBtn.style.display = "block";
     
 };
 
@@ -182,7 +227,7 @@ function scoreFacts(){
 
 
  
-buttonNext.addEventListener("click", () => {
+nextBtn.addEventListener("click", () => {
   
     if (currentQuestion < questions.length) {
         currentQuestion++;
@@ -191,9 +236,9 @@ buttonNext.addEventListener("click", () => {
      
     } else {
         displayScore();
-        buttonNext.innerHTML = "Next";
-        buttonNext.addEventListener("click", startQuiz);
-    //    pauseTimer();
+        nextBtn.innerHTML = "Next";
+        nextBtn.addEventListener("click", startQuiz);
+
     }
    
 });
@@ -216,7 +261,7 @@ buttonNext.addEventListener("click", () => {
 // const header = document.querySelector("#header");
 // const presentScore = document.getElementById("present-score");
 // const clipButtons = document.getElementById("answer-buttons");
-// const buttonNext = document.getElementById("next-btn");
+// const nextBtn = document.getElementById("next-btn");
 // const questionMark = document.getElementById("question-mark");
 // const quiz = document.querySelector(".startup");
 // let timePiece = document.getElementById("time-piece");
@@ -335,7 +380,7 @@ buttonNext.addEventListener("click", () => {
 
 
 // function removeSets() {
-//     buttonNext.style.display = "none";
+//     nextBtn.style.display = "none";
 //     while (clipButtons.firstChild) {
 //         clipButtons.removeChild(clipButtons.firstChild);
 //     }
@@ -388,7 +433,7 @@ buttonNext.addEventListener("click", () => {
 
 
 
-//      buttonNext.style.display = "block";
+//      nextBtn.style.display = "block";
 //  }
 
 
@@ -482,15 +527,15 @@ buttonNext.addEventListener("click", () => {
 
 
 
-// buttonNext.addEventListener("click", () => {
+// nextBtn.addEventListener("click", () => {
 //     if (currentQuestion < questions.length) {
 //         currentQuestion++;
 //         resumeTimer()
 //         showQuiz();
 //     } else {
 //         displayScore();
-//         buttonNext.innerHTML = "Next";
-//         buttonNext.addEventListener("click", startQuiz);
+//         nextBtn.innerHTML = "Next";
+//         nextBtn.addEventListener("click", startQuiz);
 //     }
 // });
 
@@ -499,8 +544,8 @@ buttonNext.addEventListener("click", () => {
 // function displayScore() {
 //     removeSets();
 //     questionMark.innerHTML = `Your score is ${score} out of ${questions.length}`;
-//     buttonNext.innerHTML = "Next";
-//     buttonNext.style.display = "block";
+//     nextBtn.innerHTML = "Next";
+//     nextBtn.style.display = "block";
 //     scoreShown = true;
 // }
 
