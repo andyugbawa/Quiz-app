@@ -1,5 +1,7 @@
 import { questions } from "./question.js";
 // console.log(questions);
+const fileQuestion = questions;
+
 
 
 const startBtn = document.querySelector(".start-btn");
@@ -14,6 +16,12 @@ let timePiece = document.getElementById("time-piece");
 const countEl = document.getElementById("timer");
 const shuffleEl = document.getElementById("shuffle");
 const questionShuffle = document.getElementById("question-shuffle");
+const gameOver = document.getElementById("game-over");
+const totalScore = document.getElementById("total-score");
+const inputName = document.getElementById("input-name");
+const saveScore = document.getElementById("save-score");
+const mainMenu = document.getElementById("main-menu");
+const scoreName = document.getElementById("score-name")
 const musicBtn = document.getElementById("music-btn");
 const headTimer = document.querySelector(".count-timer");
 const audioPlayer = document.getElementById("audio-player");
@@ -28,7 +36,84 @@ let scoreShown = false;
 let time = 15;
 let timerInterval = null;
 let currentQuestionNumber = 0;
+let numberQuestionShuffle = 2
 let myTime;
+
+
+function play(){
+    console.log("Hello");
+   
+}
+
+startBtn.addEventListener("click", startQuiz);
+
+nextBtn.addEventListener("click", () => {
+  
+    if (currentQuestion < questions.length) {
+        currentQuestion++;
+        resumeTimer()
+        showQuiz();
+     
+    } else {
+        displayScore();
+        nextBtn.innerHTML = "Next";
+        nextBtn.addEventListener("click", startQuiz);
+
+    }
+
+    shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
+
+    console.log(currentQuestion)
+    console.log(currentQuestion === 10)
+    if(currentQuestion === 8 ){
+     nextBtn.innerHTML = "Go to Last Question";
+     nextBtn.style.backgroundColor = "pink";
+    }
+    else if(currentQuestion === 9){
+        nextBtn.innerHTML = "End Game";
+        
+    }
+    else if(currentQuestion === 4){
+        nextBtn.style.backgroundColor = "yellow"
+    }
+    if(currentQuestion === 10){
+        gameOver.style.display = "block";
+        totalScore.style.display = "block";
+        presentScore.style.display="none";
+        timePiece.style.display = "none";
+        shuffleEl.style.display = "none";
+        answerButtons.style.display = "none";
+        questionMark.style.display= "none";
+        inputName.style.display = "block";
+        saveScore.style.display = "block";
+        mainMenu.style.display = "block";
+        scoreName.style.display = "block";
+        clearInterval(myTime)
+    
+        
+        
+       
+    }
+
+    
+
+    displaySelectedQuestions();
+
+    
+   
+});
+
+
+
+const selectedQuestions = questions.slice(0, 10);
+
+
+selectedQuestions.forEach(question => {
+    shuffleArray(question.answers);
+});
+
+
+
 
 
 function startQuiz() {
@@ -39,29 +124,31 @@ function startQuiz() {
     presentScore.style.display = "block";
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
-    nextBtn.style.display  = "none"
+    
+   
+    // nextBtn.style.display  = "none"
 
     
     currentQuestion = 0;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
+    myTime = setInterval(andy, 1000);
 
 
     showQuiz();
-    startTimer();
 
 }
 
 
-startBtn.addEventListener("click", startQuiz);
+
 
 
 
 
 function showQuiz() {
     removeSets();
-    displayQuestionNumber();
+    displayQuestions();
 
     if (currentQuestion < questions.length) {
         
@@ -91,34 +178,35 @@ function showQuiz() {
 }
 
 
-    function startTimer(){
-        time--;
-        timePiece.innerHTML = "Time-left :" + time;
-      
-    }
-
-
-    myTime = setInterval(andy,1000);
-    function andy(){
-        startTimer()
-        
-        if(time === 0){
-            clearInterval(myTime);
-            timePiece.innerHTML = "Oops Times Up 😐"
-            
-            nextBtn.style.display = "block";
-            Array.from(answerButtons.children).forEach(button => {
-                if (button.dataset.correct === "true") {
-                    button.classList.add("correct");
-                    }else{
-                    button.classList.add("incorrect");
+function startTimer(){
+    time--;
+    timePiece.innerHTML = "Time-left :" + time;
+    play();
     
-                }
-                button.disabled = true;
-            });
-        }
+}
 
+
+
+function andy(){
+    startTimer()
+    
+    if(time === 0){
+        clearInterval(myTime);
+        timePiece.innerHTML = "Oops Times Up 😐"
+        
+            nextBtn.style.display = "block";
+        Array.from(answerButtons.children).forEach(button => {
+            if (button.dataset.correct === "true") {
+                button.classList.add("correct");
+                }else{
+                button.classList.add("incorrect");
+
+            }
+            button.disabled = true;
+        });
     }
+
+}
 
     
 function resumeTimer(){
@@ -137,7 +225,7 @@ function atase(){
     if(time === 0){
         clearInterval(myTime)
          timePiece.innerHTML = "Oops Times Up 😐"
-         nextBtn.style.display = "block"
+         nextBtn.style.display = "block";
         Array.from(answerButtons.children).forEach(button => {
             if (button.dataset.correct === "true") {
                 button.classList.add("correct");
@@ -170,9 +258,10 @@ function removeSets() {
 }
 
 
-function displayQuestionNumber() {
+function displayQuestions() {
     const shuffleElement = document.getElementById("shuffle");
-    shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length} shuffled from 50`;
+    shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length -40} shuffled from 50`;
+   
 }
 
 function pickAnswer(e) {
@@ -202,6 +291,8 @@ function pickAnswer(e) {
 
     // pauseTimer();
      clearInterval(myTime);
+
+    //  displayQuestions();
      
     
  
@@ -223,25 +314,34 @@ function pickAnswer(e) {
 
 function scoreFacts(){
     presentScore.textContent= `Present Score :${score}`
- };
+};
 
-
- 
-nextBtn.addEventListener("click", () => {
-  
-    if (currentQuestion < questions.length) {
-        currentQuestion++;
-        resumeTimer()
-        showQuiz();
-     
-    } else {
-        displayScore();
-        nextBtn.innerHTML = "Next";
-        nextBtn.addEventListener("click", startQuiz);
-
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-   
-});
+}
+
+
+
+function displaySelectedQuestions() {
+    selectedQuestions.forEach((question, index) => {
+        // console.log(`${index + 1}. ${question.question}`);
+        question.answers.forEach(answer => {
+            // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
+        });
+    });
+
+    if(questions <= 10){
+        nextBtn.innerHTML = "Go to last Question"
+    }
+}
+
+shuffleArray(questions);
+
+displaySelectedQuestions();
+
 
 
 
