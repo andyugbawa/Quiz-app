@@ -21,7 +21,9 @@ const totalScore = document.getElementById("total-score");
 const inputName = document.getElementById("input-name");
 const saveScore = document.getElementById("save-score");
 const mainMenu = document.getElementById("main-menu");
-const scoreName = document.getElementById("score-name")
+const scoreName = document.getElementById("score-name");
+const listScore = document.getElementById("list-score");
+// const pass = document.getElementById("pass")
 const musicBtn = document.getElementById("music-btn");
 const headTimer = document.querySelector(".count-timer");
 const audioPlayer = document.getElementById("audio-player");
@@ -31,19 +33,23 @@ const song2Src = "./music/05. Ken Stage.mp3";
 
 
 let currentQuestion = 0;
-let score = 0;
+let score = 10;
 let scoreShown = false;
 let time = 15;
 let timerInterval = null;
 let currentQuestionNumber = 0;
-let numberQuestionShuffle = 2
+let numberQuestionShuffle = 2;
+let figureScore = 0;
 let myTime;
 
 
+
 function play(){
-    console.log("Hello");
+    // console.log("Hello");
    
 }
+
+saveScore.addEventListener("click",viewScores);
 
 startBtn.addEventListener("click", startQuiz);
 
@@ -63,14 +69,14 @@ nextBtn.addEventListener("click", () => {
 
     shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
 
-    console.log(currentQuestion)
-    console.log(currentQuestion === 10)
+    
     if(currentQuestion === 8 ){
      nextBtn.innerHTML = "Go to Last Question";
      nextBtn.style.backgroundColor = "pink";
     }
     else if(currentQuestion === 9){
         nextBtn.innerHTML = "End Game";
+       
         
     }
     else if(currentQuestion === 4){
@@ -88,22 +94,68 @@ nextBtn.addEventListener("click", () => {
         saveScore.style.display = "block";
         mainMenu.style.display = "block";
         scoreName.style.display = "block";
+        holdTask();
+        
         clearInterval(myTime)
-    
-        
-        
-       
     }
-
-    
-
     displaySelectedQuestions();
-
-    
-   
+    // viewScores();
 });
 
+function viewScores(){
+    let chartValue = inputName.value;
+    let scoreEl = document.createElement("p");
+    scoreEl.textContent = chartValue;
+    scoreEl.innerHTML =`${score}     --${chartValue}`
+    listScore.appendChild(scoreEl)
+    scoreEl.style.color = "white"
+    inputName.value = "";
+    scoreStorage();
+    
+     listScore.style.display = "block"
+};
 
+function scoreStorage(){
+    let pole = [];
+    listScore.querySelectorAll("p").forEach((items)=>{
+      pole.push(items.textContent)  
+    })
+    localStorage.setItem("quiz",JSON.stringify(pole))
+
+   
+};
+
+
+function holdTask(){
+    let pale =JSON.parse(localStorage.getItem("quiz"))
+    pale.forEach((items)=>{
+        let pill = document.createElement("p")
+        pill.classList.add("pass")
+        pill.textContent = items
+        listScore.appendChild(pill)
+    })
+
+     
+    // let copiedData =localStorage.getItem("quiz")
+    //     console.log(JSON.parse(copiedData));
+    //     let passMark = [];
+    //     let parseData = JSON.parse(copiedData);
+    //     parseData.forEach((items)=>{
+    //         let p = document.createElement("p");
+    //         p.classList.add("pass");
+    //         p.innerHTML = items;
+        
+            
+    //     })
+}
+
+function displayTotalScore(){
+ if(score < 100 || score > 1 ){
+    totalScore.innerHTML = `You Scored: ${score}/100` 
+ }
+   
+
+}
 
 const selectedQuestions = questions.slice(0, 10);
 
@@ -111,10 +163,6 @@ const selectedQuestions = questions.slice(0, 10);
 selectedQuestions.forEach(question => {
     shuffleArray(question.answers);
 });
-
-
-
-
 
 function startQuiz() {
     
@@ -125,25 +173,19 @@ function startQuiz() {
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
     
-   
-    // nextBtn.style.display  = "none"
-
-    
     currentQuestion = 0;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
     myTime = setInterval(andy, 1000);
 
-
     showQuiz();
 
+     // pass.style.display = "none"
+    // listScore.style.display= "none"
+    // nextBtn.style.display  = "none"
+
 }
-
-
-
-
-
 
 
 function showQuiz() {
@@ -266,28 +308,35 @@ function displayQuestions() {
 
 function pickAnswer(e) {
     const choiceBtn = e.target;
+    // console.log(choiceBtn)
     const par = document.createElement("p");
     const par1 = document.createElement("p");
     par1.classList.add("good");
     par.classList.add("edit");
     const contentPar = document.createElement("div");
     contentPar.classList.add("para-content");
-    const letCorrect = choiceBtn.dataset.correct === "true";
     
-    if (letCorrect) {
+    
+    if (choiceBtn.dataset.correct === "true") {
         choiceBtn.classList.add("correct");
-        score++;
+        score+=10;
         par1.innerHTML = "Good Job 😎 🎉🎖️";
         contentPar.append(par1);
+        
         
     } else {
         choiceBtn.classList.add("incorrect");
         par.innerHTML = "Oops Wrong Answer 😐";
         contentPar.append(par);
+        
     
     }
 
     quiz.appendChild(contentPar);
+
+    displayTotalScore();
+
+    // scoreStorage();
 
     // pauseTimer();
      clearInterval(myTime);
@@ -311,10 +360,42 @@ function pickAnswer(e) {
     
 };
 
+// {
+//     question: 'What is the primary use of an IP address?',
+//     answers: [
+//         { text: "To identify a device on a network", correct: true },
+//         { text: "To encrypt data", correct: false },
+//         { text: "To store data", correct: false },
+//         { text: "To create web pages", correct: false }
+//     ]
+// },
 
+// "your selection" === "the correct answer"
+// "443" === 
+ 
+// if (the answer is correct){
+//     // give 10 points
+//     add 10 points to the innerHTML
+// }else{
+//      do not give 10 points.
+
+// }
+
+// if(answerButtons === answers)
 function scoreFacts(){
+    //  let score = 5;
+    // if(score < 10){
+    //     score+=10;
+    // }else{
+    //     score+=10;
+    // }
     presentScore.textContent= `Present Score :${score}`
+    
+    
 };
+
+
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -336,7 +417,7 @@ function displaySelectedQuestions() {
     if(questions <= 10){
         nextBtn.innerHTML = "Go to last Question"
     }
-}
+};
 
 shuffleArray(questions);
 
@@ -691,18 +772,81 @@ displaySelectedQuestions();
 
 
 
+// function fetchStorage(){
+//     let passMark = JSON.parse(localStorage.getItem("quiz")) ||[];
+//     passMark.forEach((item)=>{
+//     const newParEl = document.getElementById("li");
+//     // newParEl.classList.add("pass")
+//     newParEl.textContent =item;
+//     listScore.appendChild(newParEl)
+
+//     });
+// };
+
+
+ // let passMark=[];
+        // let word = document.createElement("p")
+        // word.textContent  = "Andy --30"
+        // passMark.push(word.textContent);
+        // localStorage.setItem("quiz",JSON.stringify(passMark))
+
+// console.log(currentQuestion)
+    // console.log(currentQuestion === 10)
+
+ // saveTolocalStorage();
+        // let copiedData =localStorage.getItem("quiz")
+        // console.log(JSON.parse(copiedData));
+        // let passMark = ["30 --Andy","50 --Zino","60 --Atase"];
+        // let parseData = JSON.parse(copiedData);
+        // parseData.forEach((items)=>{
+        //     let p = document.createElement("p");
+        //     p.classList.add("pass");
+        //     p.innerHTML = items;
+        //     // listScore.appendChild(p);
+            
+        // })
+        // console.log(copiedData);
+        // listScore.appendChild("andy")
+    //   listScore.appendChild(copiedData)
+        
+
+         // for(let i=0; i<passMark.length;i++){
+        //     console.log(passMark[i])
+        // }
 
 
 
+        // function saveTolocalStorage(){
+        //     // let passMark=["30 --Andy","50 --Zino","60 --Atase"];
+        //     // localStorage.setItem("quiz",JSON.stringify(passMark));
+        
+        //     // let pole = [];
+        //     // listScore.querySelectorAll("p").forEach((items)=>{
+        //     //   pole.push(items.textContent)  
+        //     // })
+        //     // localStorage.setItem("quiz",JSON.stringify(pole))
+           
+            
+            
+        // }
+
+         // let passMark= [];
+    // listScore.querySelectorAll("li").forEach(function(items){
+    //     passMark.push(items.textContent)
+    // });
+    // localStorage.setItem("quiz",JSON.stringify(passMark))
 
 
+// function retrieveData(){
+//     let copiedData =localStorage.getItem("quiz")
 
-
-
-
-
-
-
+//     if(copiedData){
+//         let compData = JSON.parse(copiedData)
+//         console.log(compData)
+//     }else{
+//         console.log("None")
+//     }
+// }
 
 
 

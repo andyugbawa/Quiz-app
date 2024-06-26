@@ -483,7 +483,7 @@ selectedQuestions.forEach(question => {
 
 function displaySelectedQuestions() {
     selectedQuestions.forEach((question, index) => {
-        console.log(`${index + 1}. ${question.question}`);
+        // console.log(`${index + 1}. ${question.question}`);
         question.answers.forEach(answer => {
             // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
         });
