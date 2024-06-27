@@ -23,6 +23,8 @@ const saveScore = document.getElementById("save-score");
 const mainMenu = document.getElementById("main-menu");
 const scoreName = document.getElementById("score-name");
 const listScore = document.getElementById("list-score");
+const hallFame = document.getElementById("hall-fame");
+const menuButton = document.getElementById("menu-btn")
 // const pass = document.getElementById("pass")
 const musicBtn = document.getElementById("music-btn");
 const headTimer = document.querySelector(".count-timer");
@@ -44,125 +46,19 @@ let myTime;
 
 
 
-function play(){
-    // console.log("Hello");
+// function play(){
+//     // console.log("Hello");
    
-}
+// }
 
 saveScore.addEventListener("click",viewScores);
 
 startBtn.addEventListener("click", startQuiz);
 
-nextBtn.addEventListener("click", () => {
-  
-    if (currentQuestion < questions.length) {
-        currentQuestion++;
-        resumeTimer()
-        showQuiz();
-     
-    } else {
-        displayScore();
-        nextBtn.innerHTML = "Next";
-        nextBtn.addEventListener("click", startQuiz);
+nextBtn.addEventListener("click",nextPage);
 
-    }
+mainMenu.addEventListener("click",menuPage);
 
-    shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
-
-    
-    if(currentQuestion === 8 ){
-     nextBtn.innerHTML = "Go to Last Question";
-     nextBtn.style.backgroundColor = "pink";
-    }
-    else if(currentQuestion === 9){
-        nextBtn.innerHTML = "End Game";
-       
-        
-    }
-    else if(currentQuestion === 4){
-        nextBtn.style.backgroundColor = "yellow"
-    }
-    if(currentQuestion === 10){
-        gameOver.style.display = "block";
-        totalScore.style.display = "block";
-        presentScore.style.display="none";
-        timePiece.style.display = "none";
-        shuffleEl.style.display = "none";
-        answerButtons.style.display = "none";
-        questionMark.style.display= "none";
-        inputName.style.display = "block";
-        saveScore.style.display = "block";
-        mainMenu.style.display = "block";
-        scoreName.style.display = "block";
-        holdTask();
-        
-        clearInterval(myTime)
-    }
-    displaySelectedQuestions();
-    // viewScores();
-});
-
-function viewScores(){
-    let chartValue = inputName.value;
-    let scoreEl = document.createElement("p");
-    scoreEl.textContent = chartValue;
-    scoreEl.innerHTML =`${score}     --${chartValue}`
-    listScore.appendChild(scoreEl)
-    scoreEl.style.color = "white"
-    inputName.value = "";
-    scoreStorage();
-    
-     listScore.style.display = "block"
-};
-
-function scoreStorage(){
-    let pole = [];
-    listScore.querySelectorAll("p").forEach((items)=>{
-      pole.push(items.textContent)  
-    })
-    localStorage.setItem("quiz",JSON.stringify(pole))
-
-   
-};
-
-
-function holdTask(){
-    let pale =JSON.parse(localStorage.getItem("quiz"))
-    pale.forEach((items)=>{
-        let pill = document.createElement("p")
-        pill.classList.add("pass")
-        pill.textContent = items
-        listScore.appendChild(pill)
-    })
-
-     
-    // let copiedData =localStorage.getItem("quiz")
-    //     console.log(JSON.parse(copiedData));
-    //     let passMark = [];
-    //     let parseData = JSON.parse(copiedData);
-    //     parseData.forEach((items)=>{
-    //         let p = document.createElement("p");
-    //         p.classList.add("pass");
-    //         p.innerHTML = items;
-        
-            
-    //     })
-}
-
-function displayTotalScore(){
- if(score < 100 || score > 1 ){
-    totalScore.innerHTML = `You Scored: ${score}/100` 
- }
-   
-
-}
-
-const selectedQuestions = questions.slice(0, 10);
-
-
-selectedQuestions.forEach(question => {
-    shuffleArray(question.answers);
-});
 
 function startQuiz() {
     
@@ -173,7 +69,7 @@ function startQuiz() {
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
     
-    currentQuestion = 0;
+    currentQuestion = 8;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
@@ -186,6 +82,68 @@ function startQuiz() {
     // nextBtn.style.display  = "none"
 
 }
+function andy(){
+    startTimer()
+    
+    if(time === 0){
+        clearInterval(myTime);
+        timePiece.innerHTML = "Oops Times Up 😐"
+        
+            nextBtn.style.display = "block";
+        Array.from(answerButtons.children).forEach(button => {
+            if (button.dataset.correct === "true") {
+                button.classList.add("correct");
+                }else{
+                button.classList.add("incorrect");
+
+            }
+            button.disabled = true;
+        });
+    }
+
+}
+
+function atase(){
+    time--;
+    timePiece.innerHTML = "Time-left :" + time;
+    if(time === 0){
+        clearInterval(myTime)
+         timePiece.innerHTML = "Oops Times Up 😐"
+         nextBtn.style.display = "block";
+        Array.from(answerButtons.children).forEach(button => {
+            if (button.dataset.correct === "true") {
+                button.classList.add("correct");
+            }else{
+                button.classList.add("incorrect");
+
+            }
+            button.disabled = true;
+        });
+    }
+
+    
+    
+ }
+
+     
+function resumeTimer(){
+    // startTimer()
+    // clearInterval(timerInterval); 
+    time = 15; 
+    timePiece.innerHTML = "Time-left :" + time;
+     myTime = setInterval(atase,1000);
+    
+    
+};
+
+
+function startTimer(){
+    time--;
+    timePiece.innerHTML = "Time-left :" + time;
+    // play();
+    
+}
+
 
 
 function showQuiz() {
@@ -215,96 +173,9 @@ function showQuiz() {
     
     } else {
         
-        displayScore();
+        // displayScore();
     }
-}
-
-
-function startTimer(){
-    time--;
-    timePiece.innerHTML = "Time-left :" + time;
-    play();
-    
-}
-
-
-
-function andy(){
-    startTimer()
-    
-    if(time === 0){
-        clearInterval(myTime);
-        timePiece.innerHTML = "Oops Times Up 😐"
-        
-            nextBtn.style.display = "block";
-        Array.from(answerButtons.children).forEach(button => {
-            if (button.dataset.correct === "true") {
-                button.classList.add("correct");
-                }else{
-                button.classList.add("incorrect");
-
-            }
-            button.disabled = true;
-        });
-    }
-
-}
-
-    
-function resumeTimer(){
-    // startTimer()
-    // clearInterval(timerInterval); 
-    time = 15; 
-    timePiece.innerHTML = "Time-left :" + time;
-     myTime = setInterval(atase,1000);
-    
-    
 };
-
-function atase(){
-    time--;
-    timePiece.innerHTML = "Time-left :" + time;
-    if(time === 0){
-        clearInterval(myTime)
-         timePiece.innerHTML = "Oops Times Up 😐"
-         nextBtn.style.display = "block";
-        Array.from(answerButtons.children).forEach(button => {
-            if (button.dataset.correct === "true") {
-                button.classList.add("correct");
-            }else{
-                button.classList.add("incorrect");
-
-            }
-            button.disabled = true;
-        });
-    }
-
-    
-    
- }
-
-function pauseTimer(){
-    clearInterval(timerInterval)
-    timerInterval = null
-}
-
-
-
-function removeSets() {
-    nextBtn.style.display = "none";
-    while (answerButtons.firstChild) {
-        answerButtons.removeChild(answerButtons.firstChild);
-    }
-    const wrongEl = document.querySelectorAll(".para-content");
-    wrongEl.forEach(element => element.remove());
-}
-
-
-function displayQuestions() {
-    const shuffleElement = document.getElementById("shuffle");
-    shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length -40} shuffled from 50`;
-   
-}
 
 function pickAnswer(e) {
     const choiceBtn = e.target;
@@ -360,6 +231,237 @@ function pickAnswer(e) {
     
 };
 
+function removeSets() {
+    nextBtn.style.display = "none";
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+    }
+    const wrongEl = document.querySelectorAll(".para-content");
+    wrongEl.forEach(element => element.remove());
+}
+
+
+function displayQuestions() {
+    const shuffleElement = document.getElementById("shuffle");
+    shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length -40} shuffled from 50`;
+   
+}
+
+function nextPage() {
+  
+    if (currentQuestion < questions.length) {
+        currentQuestion++;
+        resumeTimer()
+        showQuiz();
+     
+    } else {
+        // displayScore();
+        nextBtn.innerHTML = "Next";
+        nextBtn.addEventListener("click", startQuiz);
+
+    }
+
+    shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
+
+    
+    if(currentQuestion === 8 ){
+     nextBtn.innerHTML = "Go to Last Question";
+     nextBtn.style.backgroundColor = "pink";
+    }
+    else if(currentQuestion === 9){
+        nextBtn.innerHTML = "End Game";
+       
+        
+    }
+    else if(currentQuestion === 4){
+        nextBtn.style.backgroundColor = "yellow"
+    }
+    if(currentQuestion === 10){
+        gameOver.style.display = "block";
+        totalScore.style.display = "block";
+        presentScore.style.display="none";
+        timePiece.style.display = "none";
+        shuffleEl.style.display = "none";
+        answerButtons.style.display = "none";
+        questionMark.style.display= "none";
+        inputName.style.display = "block";
+        saveScore.style.display = "block";
+        mainMenu.style.display = "block";
+        scoreName.style.display = "block";
+        
+        holdTask();
+        
+        clearInterval(myTime)
+    }
+    displaySelectedQuestions();
+    // viewScores();
+};
+
+function viewScores(){
+    let chartValue = inputName.value;
+    let scoreEl = document.createElement("p");
+    scoreEl.textContent = chartValue;
+    scoreEl.innerHTML =`${score}     --${chartValue}`
+    listScore.appendChild(scoreEl)
+    scoreEl.style.color = "white"
+    inputName.value = "";
+    scoreStorage();
+    
+     listScore.style.display = "block";
+     gameOver.style.display = "none";
+     totalScore.style.display = "none";
+     inputName.style.display = "none";
+     saveScore.style.display = "none";
+     mainMenu.style.display ="none";
+     hallFame.style.display = "block";
+     menuButton.style.display = "block";
+};
+
+function scoreStorage(){
+    let pole = [];
+    listScore.querySelectorAll("p").forEach((items)=>{
+      pole.push(items.textContent)  
+    })
+    localStorage.setItem("quiz",JSON.stringify(pole))
+
+   
+};
+
+function holdTask(){
+    let pale =JSON.parse(localStorage.getItem("quiz"))
+    pale.forEach((items)=>{
+        let pill = document.createElement("p")
+        pill.classList.add("pass")
+        pill.textContent = items
+        listScore.appendChild(pill)
+    })
+
+     
+    // let copiedData =localStorage.getItem("quiz")
+    //     console.log(JSON.parse(copiedData));
+    //     let passMark = [];
+    //     let parseData = JSON.parse(copiedData);
+    //     parseData.forEach((items)=>{
+    //         let p = document.createElement("p");
+    //         p.classList.add("pass");
+    //         p.innerHTML = items;
+        
+            
+    //     })
+};
+
+function menuPage(){
+
+    currentQuestion = 0;
+    console.log(score)
+    score = 0;
+    console.log(score)
+    // scoreShown = false;
+    time = 15;
+    currentQuestionNumber = 0;
+    numberQuestionShuffle = 0;
+
+    clearInterval(myTime);
+    // clearInterval(timerInterval);
+  
+ header.style.display = "block";
+ startBtn.style.display = "block";
+ hallBtn.style.display = "block";
+gameOver.style.display = "none";
+totalScore.style.display = "none";
+inputName.style.display = "none";
+saveScore.style.display = "none";
+mainMenu.style.display ="none";
+scoreName .style.display = "none";
+listScore.style.display = "none";
+// presentScore.style.display = "none";
+// answerButtons.style.display = "block";
+// questionMark.style.display = "block";
+}
+function displayTotalScore(){
+ if(score < 100 || score > 1 ){
+    totalScore.innerHTML = `You Scored: ${score}/100` 
+ }
+   
+
+};
+
+
+function scoreFacts(){
+  
+    presentScore.textContent= `Present Score :${score}`
+    
+    
+};
+
+
+
+function displaySelectedQuestions() {
+    selectedQuestions.forEach((question, index) => {
+        // console.log(`${index + 1}. ${question.question}`);
+        question.answers.forEach(answer => {
+            // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
+        });
+    });
+
+    if(questions <= 10){
+        nextBtn.innerHTML = "Go to last Question"
+    }
+};
+
+const selectedQuestions = questions.slice(0, 10);
+
+
+selectedQuestions.forEach(question => {
+    shuffleArray(question.answers);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+function pauseTimer(){
+    clearInterval(timerInterval)
+    timerInterval = null
+}
+
+
+
+
+
+
+
+
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+
+
+
+shuffleArray(questions);
+
+displaySelectedQuestions();
+
+
+
+
+
+
+
 // {
 //     question: 'What is the primary use of an IP address?',
 //     answers: [
@@ -382,46 +484,56 @@ function pickAnswer(e) {
 // }
 
 // if(answerButtons === answers)
-function scoreFacts(){
-    //  let score = 5;
-    // if(score < 10){
-    //     score+=10;
-    // }else{
-    //     score+=10;
+
+
+
+
+    // // Reset quiz state variables
+    // currentQuestion = 0;
+    // score = 0;
+    // scoreShown = false;
+    // time = 15;
+    // currentQuestionNumber = 0;
+    // numberQuestionShuffle = 2;
+
+    // // Stop any running timers
+    // clearInterval(myTime);
+    // clearInterval(timerInterval);
+    // showQuiz();
+
+    // // Hide all elements related to the quiz and scores
+    // gameOver.style.display = "none";
+    // totalScore.style.display = "none";
+    // inputName.style.display = "none";
+    // saveScore.style.display = "none";
+    // mainMenu.style.display = "none";
+    // scoreName.style.display = "none";
+    // listScore.style.display = "none";
+    // presentScore.style.display = "none";
+    // timePiece.style.display = "none";
+    // shuffleEl.style.display = "none";
+    // answerButtons.style.display = "none";
+    // questionMark.style.display = "none";
+    // hallFame.style.display = "none";
+    // menuButton.style.display = "none";
+
+    // // Show the initial elements for the start screen
+    // header.style.display = "block";
+    // startBtn.style.display = "block";
+    // hallBtn.style.display = "block";
+
+    // // Clear answer buttons and any feedback elements
+    // while (answerButtons.firstChild) {
+    //     answerButtons.removeChild(answerButtons.firstChild);
     // }
-    presentScore.textContent= `Present Score :${score}`
-    
-    
-};
+    // const feedbackElements = document.querySelectorAll(".para-content");
+    // feedbackElements.forEach(element => element.remove());
 
+    // // Reset any changed UI elements to their default state
+    // nextBtn.innerHTML = "Next";
+    // nextBtn.style.backgroundColor = "";
 
-
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-
-
-function displaySelectedQuestions() {
-    selectedQuestions.forEach((question, index) => {
-        // console.log(`${index + 1}. ${question.question}`);
-        question.answers.forEach(answer => {
-            // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
-        });
-    });
-
-    if(questions <= 10){
-        nextBtn.innerHTML = "Go to last Question"
-    }
-};
-
-shuffleArray(questions);
-
-displaySelectedQuestions();
+    // // Optionally reset other elements or styles as needed
 
 
 

@@ -334,6 +334,24 @@ p{
 .word{
     display: none;
 }
+#hall-fame{
+    display: none;
+    position: relative;
+    bottom: 660px;
+    left:264px;
+    color:aqua;
+    
+}
+#menu-btn{
+    display: none;
+    position: relative;
+    bottom: 650px;
+    left:290px
+}
+#head-content{
+    position: relative;
+    bottom: 100px;
+}
 
 
 
