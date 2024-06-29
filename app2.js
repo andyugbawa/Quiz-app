@@ -24,8 +24,8 @@ const mainMenu = document.getElementById("main-menu");
 const scoreName = document.getElementById("score-name");
 const listScore = document.getElementById("list-score");
 const hallFame = document.getElementById("hall-fame");
-const menuButton = document.getElementById("menu-btn")
-// const pass = document.getElementById("pass")
+const menuButton = document.getElementById("menu-btn");
+const headContent = document.getElementById("head-content")
 const musicBtn = document.getElementById("music-btn");
 const headTimer = document.querySelector(".count-timer");
 const audioPlayer = document.getElementById("audio-player");
@@ -46,11 +46,6 @@ let myTime;
 
 
 
-// function play(){
-//     // console.log("Hello");
-   
-// }
-
 saveScore.addEventListener("click",viewScores);
 
 startBtn.addEventListener("click", startQuiz);
@@ -58,6 +53,12 @@ startBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click",nextPage);
 
 mainMenu.addEventListener("click",menuPage);
+
+hallBtn.addEventListener("click", flashScores);
+
+menuButton.addEventListener("click",backToMenu);
+
+
 
 
 function startQuiz() {
@@ -69,7 +70,7 @@ function startQuiz() {
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
     
-    currentQuestion = 8;
+    currentQuestion = 0;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
@@ -77,10 +78,11 @@ function startQuiz() {
 
     showQuiz();
 
-     // pass.style.display = "none"
-    // listScore.style.display= "none"
-    // nextBtn.style.display  = "none"
-
+    answerButtons.style.display = "block";
+    questionMark.style.display = "block";
+    presentScore.textContent= `Present Score :${score}`;
+    nextBtn.innerHTML = "Next";
+    nextBtn.style.backgroundColor = "blue"
 }
 function andy(){
     startTimer()
@@ -294,6 +296,7 @@ function nextPage() {
         clearInterval(myTime)
     }
     displaySelectedQuestions();
+    
     // viewScores();
 };
 
@@ -315,6 +318,14 @@ function viewScores(){
      mainMenu.style.display ="none";
      hallFame.style.display = "block";
      menuButton.style.display = "block";
+     headContent.style.display = "block";
+     headContent.style.position = "relative";
+     headContent.style.bottom = "380px";
+     hallFame.style.position = "relative";
+     hallFame.style.bottom = "300px";
+     menuButton.style.position = "relative";
+     menuButton.style.bottom = "300px";
+
 };
 
 function scoreStorage(){
@@ -353,16 +364,13 @@ function holdTask(){
 function menuPage(){
 
     currentQuestion = 0;
-    console.log(score)
     score = 0;
-    console.log(score)
-    // scoreShown = false;
     time = 15;
     currentQuestionNumber = 0;
     numberQuestionShuffle = 0;
 
     clearInterval(myTime);
-    // clearInterval(timerInterval);
+   
   
  header.style.display = "block";
  startBtn.style.display = "block";
@@ -374,15 +382,39 @@ saveScore.style.display = "none";
 mainMenu.style.display ="none";
 scoreName .style.display = "none";
 listScore.style.display = "none";
-// presentScore.style.display = "none";
-// answerButtons.style.display = "block";
-// questionMark.style.display = "block";
+}
+
+
+function flashScores(){
+    header.style.display = "none";
+    startBtn.style.display = "none";
+    mainMenu.style.display = "block";
+    scoreName .style.display = "block";
+    mainMenu.style.position = "relative";
+    mainMenu.style.bottom = "140px";
+    mainMenu.style.left = "90px";
+    scoreName.style.position = "relative";
+    scoreName.style.bottom = "200px";
+    scoreName.style.left = "354px";
+    hallBtn.style.display = "none";
+    listScore.style.display = "block";
+    listScore.style.position = "relative";
+    listScore.style.bottom = "200px";
+    listScore.style.left = "396px";
+}
+
+function backToMenu(){
+    hallFame.style.display = "none";
+    scoreName.style.display = "none";
+    listScore.style.display = "none"
+    header.style.display = "block";
+    startBtn.style.display = "block";
+    hallBtn.style.display = "block";
 }
 function displayTotalScore(){
  if(score < 100 || score > 1 ){
     totalScore.innerHTML = `You Scored: ${score}/100` 
  }
-   
 
 };
 
@@ -393,8 +425,6 @@ function scoreFacts(){
     
     
 };
-
-
 
 function displaySelectedQuestions() {
     selectedQuestions.forEach((question, index) => {
@@ -417,48 +447,96 @@ selectedQuestions.forEach(question => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-function pauseTimer(){
-    clearInterval(timerInterval)
-    timerInterval = null
-}
-
-
-
-
-
-
-
-
-
-
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
-
-
-
 shuffleArray(questions);
 
 displaySelectedQuestions();
 
 
 
+//  THIS LINE OF CODE IS FOR THE MUSIC.
 
+// document.addEventListener("DOMContentLoaded", () => {
+//     const musicBtn = document.getElementById("music-btn");
+//     musicBtn.addEventListener("click", () => {
+//         if (musicBtn.innerText === "Switch background music 1") {
+//             musicBtn.innerText = "Switch background music 2";
+//             musicBtn.style.backgroundColor = "pink";
+            
+            
+//             audioPlayer.src = song2Src;
+//             audioPlayer.currentTime = 0; 
+//             audioPlayer.play();
+
+
+            
+//         } else {
+//             musicBtn.innerText = "Switch background music 1";
+//             musicBtn.style.backgroundColor = "#1e90ff";
+            
+
+//             audioPlayer.src = song1Src;
+//             audioPlayer.currentTime = 0; 
+//             audioPlayer.play();
+        
+//         }
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /////////////////////////////////////////////////////////////////////////////////////////////
+// presentScore.style.display = "none";
+// answerButtons.style.display = "block";
+// questionMark.style.display = "block";
+//  console.log(score < 10)
+// if(score < 10){
+//    
+// }
+
+
+// function pauseTimer(){
+//     //     clearInterval(timerInterval)
+//     //     timerInterval = null
+//     // }
+
+
+ // clearInterval(timerInterval);
+
+
+
+ 
+// function play(){
+//     // console.log("Hello");
+   
+// }
+
+
+     // pass.style.display = "none"
+    // listScore.style.display= "none"
+    // nextBtn.style.display  = "none"
 
 
 
@@ -844,32 +922,6 @@ displaySelectedQuestions();
 
 
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     const musicBtn = document.getElementById("music-btn");
-//     musicBtn.addEventListener("click", () => {
-//         if (musicBtn.innerText === "Switch background music 1") {
-//             musicBtn.innerText = "Switch background music 2";
-//             musicBtn.style.backgroundColor = "pink";
-            
-            
-//             audioPlayer.src = song2Src;
-//             audioPlayer.currentTime = 0; 
-//             audioPlayer.play();
-
-
-            
-//         } else {
-//             musicBtn.innerText = "Switch background music 1";
-//             musicBtn.style.backgroundColor = "#1e90ff";
-            
-
-//             audioPlayer.src = song1Src;
-//             audioPlayer.currentTime = 0; 
-//             audioPlayer.play();
-        
-//         }
-//     });
-// });
 
 
 

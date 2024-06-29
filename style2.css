@@ -306,6 +306,9 @@ p{
     display: none; 
     width: 80px;
     height: 20px;
+    /* position: relative;
+    bottom: 80px;
+    left: 82px; */
 }
 .save-button{
     display: flex;
@@ -314,12 +317,14 @@ p{
 #score-name{
     position: relative;
     bottom: 120px;
-    left:280px;
+    left:276px;
     display: none;
     color:orange;
 }
 .hall-score{
-  
+  /* width: 200px;
+  height: 50px;
+  background-color: red */
 }
 #list-score{
     position: relative;
@@ -349,8 +354,8 @@ p{
     left:290px
 }
 #head-content{
-    position: relative;
-    bottom: 100px;
+    /* position: relative; */
+    /* bottom: 180px; */
 }
 
 
