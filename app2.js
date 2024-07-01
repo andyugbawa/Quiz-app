@@ -24,11 +24,12 @@ const mainMenu = document.getElementById("main-menu");
 const scoreName = document.getElementById("score-name");
 const listScore = document.getElementById("list-score");
 const hallFame = document.getElementById("hall-fame");
-const menuButton = document.getElementById("menu-btn");
+const menuBtn = document.getElementById("menu-btn");
 const headContent = document.getElementById("head-content")
 const musicBtn = document.getElementById("music-btn");
 const headTimer = document.querySelector(".count-timer");
 const audioPlayer = document.getElementById("audio-player");
+const selectedQuestions = questions.slice(0, 10);
 const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
 const song2Src = "./music/05. Ken Stage.mp3";
 
@@ -56,7 +57,7 @@ mainMenu.addEventListener("click",menuPage);
 
 hallBtn.addEventListener("click", flashScores);
 
-menuButton.addEventListener("click",backToMenu);
+menuBtn.addEventListener("click",backToMenu);
 
 
 
@@ -74,7 +75,7 @@ function startQuiz() {
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
-    myTime = setInterval(andy, 1000);
+    myTime = setInterval(countTimer, 1000);
 
     showQuiz();
 
@@ -84,7 +85,7 @@ function startQuiz() {
     nextBtn.innerHTML = "Next";
     nextBtn.style.backgroundColor = "blue"
 }
-function andy(){
+function countTimer(){
     startTimer()
     
     if(time === 0){
@@ -105,7 +106,7 @@ function andy(){
 
 }
 
-function atase(){
+function stopTime(){
     time--;
     timePiece.innerHTML = "Time-left :" + time;
     if(time === 0){
@@ -133,7 +134,7 @@ function resumeTimer(){
     // clearInterval(timerInterval); 
     time = 15; 
     timePiece.innerHTML = "Time-left :" + time;
-     myTime = setInterval(atase,1000);
+     myTime = setInterval(stopTime,1000);
     
     
 };
@@ -295,7 +296,7 @@ function nextPage() {
         
         clearInterval(myTime)
     }
-    displaySelectedQuestions();
+
     
     // viewScores();
 };
@@ -317,14 +318,16 @@ function viewScores(){
      saveScore.style.display = "none";
      mainMenu.style.display ="none";
      hallFame.style.display = "block";
-     menuButton.style.display = "block";
+     menuBtn.style.display = "block";
      headContent.style.display = "block";
      headContent.style.position = "relative";
      headContent.style.bottom = "380px";
      hallFame.style.position = "relative";
-     hallFame.style.bottom = "300px";
-     menuButton.style.position = "relative";
-     menuButton.style.bottom = "300px";
+     hallFame.style.left = "250px";
+     menuBtn.style.position = "relative";
+     menuBtn.style.bottom = "410px";
+     menuBtn.style.left = "250px";
+     
 
 };
 
@@ -381,7 +384,11 @@ inputName.style.display = "none";
 saveScore.style.display = "none";
 mainMenu.style.display ="none";
 scoreName .style.display = "none";
+scoreName.style.position = "relative"
 listScore.style.display = "none";
+// listScore.style.position = "relative";
+// listScore.style.top = "150px"
+
 }
 
 
@@ -425,38 +432,6 @@ function scoreFacts(){
     
     
 };
-
-function displaySelectedQuestions() {
-    selectedQuestions.forEach((question, index) => {
-        // console.log(`${index + 1}. ${question.question}`);
-        question.answers.forEach(answer => {
-            // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
-        });
-    });
-
-    if(questions <= 10){
-        nextBtn.innerHTML = "Go to last Question"
-    }
-};
-
-const selectedQuestions = questions.slice(0, 10);
-
-
-selectedQuestions.forEach(question => {
-    shuffleArray(question.answers);
-});
-
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-shuffleArray(questions);
-
-displaySelectedQuestions();
-
 
 
 //  THIS LINE OF CODE IS FOR THE MUSIC.
@@ -593,7 +568,7 @@ displaySelectedQuestions();
     // answerButtons.style.display = "none";
     // questionMark.style.display = "none";
     // hallFame.style.display = "none";
-    // menuButton.style.display = "none";
+    // menuBtn.style.display = "none";
 
     // // Show the initial elements for the start screen
     // header.style.display = "block";
