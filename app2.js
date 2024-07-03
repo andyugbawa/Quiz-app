@@ -311,7 +311,7 @@ function viewScores(){
     inputName.value = "";
     scoreStorage();
     
-     listScore.style.display = "block";
+    //  listScore.style.display = "block";
      gameOver.style.display = "none";
      totalScore.style.display = "none";
      inputName.style.display = "none";
@@ -320,13 +320,16 @@ function viewScores(){
      hallFame.style.display = "block";
      menuBtn.style.display = "block";
      headContent.style.display = "block";
-     headContent.style.position = "relative";
-     headContent.style.bottom = "380px";
-     hallFame.style.position = "relative";
-     hallFame.style.left = "250px";
-     menuBtn.style.position = "relative";
-     menuBtn.style.bottom = "410px";
-     menuBtn.style.left = "250px";
+   
+
+    //  headContent.style.position = "relative";
+    //  headContent.style.bottom = "380px";
+    //  hallFame.style.position = "relative";
+    //  hallFame.style.left = "250px";
+    //  menuBtn.style.position = "relative";
+    //  menuBtn.style.bottom = "410px";
+    //  menuBtn.style.left = "250px";
+    //  holdTask();
      
 
 };
@@ -348,6 +351,8 @@ function holdTask(){
         pill.classList.add("pass")
         pill.textContent = items
         listScore.appendChild(pill)
+        //  listScore.style.position = "relative";
+        // listScore.style.bottom = "100px"
     })
 
      
@@ -388,6 +393,7 @@ scoreName.style.position = "relative"
 listScore.style.display = "none";
 // listScore.style.position = "relative";
 // listScore.style.top = "150px"
+// holdTask();
 
 }
 
@@ -407,7 +413,9 @@ function flashScores(){
     listScore.style.display = "block";
     listScore.style.position = "relative";
     listScore.style.bottom = "200px";
-    listScore.style.left = "396px";
+    listScore.style.left = "398px";
+   
+    holdTask();
 }
 
 function backToMenu(){
