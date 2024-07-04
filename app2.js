@@ -83,7 +83,8 @@ function startQuiz() {
     questionMark.style.display = "block";
     presentScore.textContent= `Present Score :${score}`;
     nextBtn.innerHTML = "Next";
-    nextBtn.style.backgroundColor = "blue"
+    nextBtn.style.backgroundColor = "blue";
+    // menuBtn.style.display = ""
 }
 function countTimer(){
     startTimer()
@@ -311,7 +312,7 @@ function viewScores(){
     inputName.value = "";
     scoreStorage();
     
-    //  listScore.style.display = "block";
+     listScore.style.display = "block";
      gameOver.style.display = "none";
      totalScore.style.display = "none";
      inputName.style.display = "none";
@@ -319,6 +320,7 @@ function viewScores(){
      mainMenu.style.display ="none";
      hallFame.style.display = "block";
      menuBtn.style.display = "block";
+    //  menuBtn.style.display = "";
      headContent.style.display = "block";
    
 
@@ -391,6 +393,7 @@ mainMenu.style.display ="none";
 scoreName .style.display = "none";
 scoreName.style.position = "relative"
 listScore.style.display = "none";
+listScore.innerHTML = "";
 // listScore.style.position = "relative";
 // listScore.style.top = "150px"
 // holdTask();
@@ -414,17 +417,29 @@ function flashScores(){
     listScore.style.position = "relative";
     listScore.style.bottom = "200px";
     listScore.style.left = "398px";
+    menuBtn.style.display="";
    
-    holdTask();
+    let pale =JSON.parse(localStorage.getItem("quiz"))
+    pale.forEach((items)=>{
+        let pill = document.createElement("p")
+        pill.classList.add("pass")
+        pill.textContent = items
+        listScore.appendChild(pill)
+       
+    })
+
 }
 
 function backToMenu(){
+    listScore.innerHTML = "";
     hallFame.style.display = "none";
     scoreName.style.display = "none";
     listScore.style.display = "none"
     header.style.display = "block";
     startBtn.style.display = "block";
     hallBtn.style.display = "block";
+    menuBtn.style.display  = "none"
+    header.style.color = "blue";
 }
 function displayTotalScore(){
  if(score < 100 || score > 1 ){
