@@ -263,11 +263,7 @@ p{
     font-size: 25px;
 }
 
-#score-chart{
-  position: absolute; 
-  bottom: 430px;
-  left: 550px;
-}
+
 
 #game-over{
     color: #fff;
