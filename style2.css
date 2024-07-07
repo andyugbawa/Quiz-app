@@ -268,28 +268,37 @@ p{
 #game-over{
     color: #fff;
     display: none;
-    color: rgb(30,142,225)
+    color: rgb(30,142,225);
+    position: relative;
+    bottom: 220px;
+    left:350px;
+
 
 }
 #total-score{
     color: #fff;
     display: none;
-    color: rgb(30,142,225) 
+    color: rgb(30,142,225);
+    position: relative;
+    bottom: 220px;
+    left:320px;
 }
 #input-content{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    position: absolute;
-    top:90px;
-    gap:10px;
-    right:-60px;
+    position: relative;
+    bottom:200px;
+    /* gap:10px; */
+    left:290px;
 
 
 }
 #input-name{
     display: none; 
-    padding: 0 2px 0px 2px; 
+    padding: 0 2px 0px 2px;
+    position: relative;
+    left:10px;
     /* color:green;  */
 }
 
@@ -297,24 +306,29 @@ p{
     display: none;
     width: 80px;
     height: 20px;
+    /* position: relative;
+    bottom:219px;
+    left:450px; */
 }
 
 #main-menu{
     display: none; 
     width: 80px;
     height: 20px;
-    /* position: relative;
-    bottom: 80px;
-    left: 82px; */
-}
+     /* position: relative; */
+     /* left:70px; */
+} 
 .save-button{
     display: flex;
-    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    /* gap: 10px; */
+    /* margin-left: 10px; */
 }
 #score-name{
     position: relative;
-    bottom: 120px;
-    left:276px;
+    bottom: 180px;
+    left:300px;
     display: none;
     color:orange;
 }
@@ -325,8 +339,8 @@ p{
 }
 #list-score{
     position: relative;
-    bottom: 120px;
-    left:325px;
+    bottom: 180px;
+    left:346px;
 }
 .pass{
     /* display: none; */
@@ -339,20 +353,24 @@ p{
 #hall-fame{
     display: none;
     position: relative;
-    /* bottom:8170px; */
+    bottom:200px;
     left:264px;
     color:aqua;
     
 }
 #menu-btn{
     display: none;
-    /* position: relative;
-    bottom: 650px;
-    left:290px */
+    position: relative;
+    bottom: 190px;
+    left:300px
 }
 #head-content{
-    /* position: relative; */
-    /* bottom: 180px; */
+   
+}
+.btn4{
+    margin-left: 10px;
+    position: relative;
+    left: 20px;
 }
 
 

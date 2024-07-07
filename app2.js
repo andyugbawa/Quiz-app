@@ -55,7 +55,7 @@ function startQuiz(){
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
     
-    currentQuestion = 8;
+    currentQuestion = 0;
     score = 0;
     scoreShown = false;
     currentQuestionNumber = 0;
@@ -68,7 +68,7 @@ function startQuiz(){
     presentScore.textContent= `Present Score :${score}`;
     nextBtn.innerHTML = "Next";
     nextBtn.style.backgroundColor = "blue";
-    // menuBtn.style.display = ""
+    listScore.style.display = "block";
 }
 
 function countTimer(){
@@ -300,18 +300,10 @@ function viewScores(){
      menuBtn.style.display = "block";
      menuBtn.style.display = "block";
      headContent.style.display = "block";
-   
 
-     headContent.style.position = "relative";
-     headContent.style.bottom = "380px";
-     hallFame.style.position = "relative";
-     hallFame.style.left = "250px";
-     hallFame.style.bottom = "50px"
-     menuBtn.style.position = "relative";
-     menuBtn.style.bottom = "60px";
-     menuBtn.style.left = "250px";
+    
+
     //  holdTask();
-     
 
 };
 
@@ -378,7 +370,7 @@ function flashScores(){
     scoreName .style.display = "block";
     hallBtn.style.display = "none";
     listScore.style.display = "block";
-
+   
    
     let pale =JSON.parse(localStorage.getItem("quiz"))
     pale.forEach((items)=>{
@@ -418,29 +410,33 @@ function scoreFacts(){
 };
 //  THIS LINE OF CODE IS FOR THE MUSIC.
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     const musicBtn = document.getElementById("music-btn");
-//     musicBtn.addEventListener("click", () => {
-//         if (musicBtn.innerText === "Switch background music 1") {
-//             musicBtn.innerText = "Switch background music 2";
-//             musicBtn.style.backgroundColor = "pink";
-            
-            
-//             audioPlayer.src = song2Src;
-//             audioPlayer.currentTime = 0; 
-//             audioPlayer.play();
+ document.addEventListener("DOMContentLoaded", () => {
+    const musicBtn = document.getElementById("music-btn");
+    const audioPlayer = document.getElementById("audio-player");
+    const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
+    const song2Src = "./music/05. Ken Stage.mp3";
 
 
-            
-//         } else {
-//             musicBtn.innerText = "Switch background music 1";
-//             musicBtn.style.backgroundColor = "#1e90ff";
-            
+    musicBtn.addEventListener("click", () => {
+        if (musicBtn.innerText === "Switch background music 1") {
+            musicBtn.innerText = "Switch background music 2";
+            musicBtn.style.backgroundColor = "pink";
+            audioPlayer.src = song2Src;
 
-//             audioPlayer.src = song1Src;
-//             audioPlayer.currentTime = 0; 
-//             audioPlayer.play();
-        
-//         }
-//     });
-// });
+            // audioPlayer.currentTime = 0; 
+            // audioPlayer.play();
+            
+        } else {
+            musicBtn.innerText = "Switch background music 1";
+            musicBtn.style.backgroundColor = "#1e90ff";
+            audioPlayer.src = song1Src;
+        }
+              audioPlayer.currentTime = 0; 
+            audioPlayer.play();
+    });
+});
+
+
+
+
+
