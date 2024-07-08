@@ -408,7 +408,7 @@ function scoreFacts(){
     
     
 };
-//  THIS LINE OF CODE IS FOR THE MUSIC.
+
 
  document.addEventListener("DOMContentLoaded", () => {
     const musicBtn = document.getElementById("music-btn");
@@ -422,10 +422,8 @@ function scoreFacts(){
             musicBtn.innerText = "Switch background music 2";
             musicBtn.style.backgroundColor = "pink";
             audioPlayer.src = song2Src;
-
             // audioPlayer.currentTime = 0; 
             // audioPlayer.play();
-            
         } else {
             musicBtn.innerText = "Switch background music 1";
             musicBtn.style.backgroundColor = "#1e90ff";

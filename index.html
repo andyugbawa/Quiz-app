@@ -9,91 +9,102 @@
 <body>
 
 
-
-    <div class="startup">
-        <div class="head-start">
-            <div class="present-content">
-                <p id="present-score">Present Score: 0</p>
-            </div>
-            <div class="count-timer">
-             <p id="time-piece">Time-Left:00:15</p>
-            </div>
-            <div class="down">
-                <h1 id="header">Quiz Category:<br>Computer</h1>
-            </div>
-        </div>
-        <div id="question-shuffle">
-            <p id="shuffle">QUESTION 1 0f 10 shuffled from 50</p>
-        </div>
-        <h2 id="question-mark"></h2>
-        <div id="answer-buttons">
-           
-            <!-- Buttons will be dynamically created here -->
-        </div>
-    
-        <div class="button-content">
-            <a id="cta" href="#"><button class="start-btn">let's play!</button></a>
-            <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
-            <!-- <button id="main-menu"> Andy Main Menu</button> -->
-        </div>
-    
-        <button id="next-btn" style="display: none;">Next</button>
-        <div id="score-chart">
-            <h1 id="game-over">GAME OVER 🎉 </h1>
-            <h1 id="total-score">You scored:10/100</h1>
-            <form id="input-content">
-                <input type="text" id="input-name" placeholder="Enter name here ...">
-                <div class="hall-score">
-                    <div class="save-button">
-                        <button  class="btn4"id="save-score">Save Score</button>
-                        <button  class="btn4"id="main-menu">  Main Menu</button>
-                    </div>
-               
-            </form>
-        </div>
-
-        <!-- <div class="hall-score">
-            <div class="save-button">
-                <button id="save-score">Save Score</button>
-                <button id="main-menu"> Andy Main Menu</button>
-            </div> -->
-
-
-           
-                
-            </p>
-        </div>
-
-        <div id="head-content">
-            <h1 id="hall-fame">  A Hall of Fame !!!</h1>
-            <button id="menu-btn">Back To Main Menu</button>
-            <p id="score-name">SCORE --NAME</p>
-            <p id="list-score">
-          </div>
+  <div class="quiz-container">
+      <div class="startup">
+           <div class="down">
+               <h1 id="header">Quiz Category:<br>Computer</h1>
+           </div>
+         <div id="score-chart">
+             <div class="chart_head">
+                 <h1 id="game-over">GAME OVER 🎉 </h1>
+                 <h1 id="total-score">You scored:10/100</h1>
+             </div>
+             <form id="input-content">
+                 <input type="text" id="input-name" placeholder="Enter name here ...">
+                 <div class="hall-score">
+                     <div class="save-button">
+                         <button  class="btn4"id="save-score">Save Score</button>
+                         <div class="btn-content">
+                             <button  class="btn4"id="main-menu">  Main Menu</button>
+                         </div>
+                     </div>
+             </form>
+         </div>
+         <div id="head-content">
+             <h1 id="hall-fame">  A Hall of Fame !!!</h1>
+             <button id="menu-btn">Back To Main Menu</button>
+             <p id="score-name">SCORE --NAME</p>
+             <p id="list-score">
+         </div>
+         <div class="head-start">
+             <div class="present-content">
+                 <p id="present-score">Present Score: 0</p>
+             </div>
+            
+             <div class="count-timer">
+              <p id="time-piece">Time-Left:00:15</p>
+             </div>
+         </div>
+         <div id="question-shuffle">
+             <p id="shuffle">QUESTION 1 0f 10 shuffled from 50</p>
+         </div>
+         <h2 id="question-mark"></h2>
+         <div id="answer-buttons">
+            
+             <!-- Buttons will be dynamically created here -->
+         </div>
+         <button id="next-btn" style="display: none;">Next</button>
+        
+         <div class="button-content">
+             <a id="cta" href="#"><button class="start-btn">let's play!</button></a> 
+              <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
+              <button id="main-menu"> Andy Main Menu</button>
+         </div>
+     </div> 
+  </div>
 
 
 
-
+       
+    <div class="sound-check">
+        <button id="music-btn">Switch background music 1</button>
     </div>
-    
-   
-     <button id="music-btn">Switch background music 1</button>
 
-     <div class="music" autoplay>
-        <audio id="audio-player" controls loop></audio>
-    </div>
+   <div class="music" autoplay>
+      <audio id="audio-player" controls loop></audio>
+  </div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+    
+    
+     
 
         
        
 
-    <!-- <div class="music" autoplay>
-        <audio id="song1" controls>
-          <source src="./music/1-01. Title Theme [CPS-1].mp3">
-        </audio>
-        <audio id="song2" controls>
-          <source src="./music/05. Ken Stage.mp3">
-        </audio>
-    </div> -->
+  
+
+    <!-- <div class="sound-check">
+        <button id="music-btn">Switch background music 1</button>
+
+    </div>
+
+   <div class="music" autoplay>
+      <audio id="audio-player" controls loop></audio>
+  </div> -->
 
  <script type="module" src="./app2.js"></script>
 </body>
