@@ -280,6 +280,8 @@ function nextPage(){
     // viewScores();
 };
 
+
+
 function viewScores(){
     let chartValue = inputName.value;
     let scoreEl = document.createElement("p");
