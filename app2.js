@@ -125,21 +125,17 @@ function resumeTimer(){
 function startTimer(){
     time--;
     timePiece.innerHTML = "Time-left :" + time;
-    // play();
+
     
 }
 
 function showQuiz(){
     removeSets();
     displayQuestions();
-
     if (currentQuestion < questions.length) {
-        
         let incrementQuiz = questions[currentQuestion];
         let questionNum = currentQuestion + 1;
         questionMark.innerHTML = questionNum + ". " + incrementQuiz.question;
-
-        
         incrementQuiz.answers.forEach(answer => {
             const button = document.createElement("button");
             button.innerHTML = answer.text;
@@ -150,57 +146,38 @@ function showQuiz(){
             button.addEventListener("click", pickAnswer);
             answerButtons.appendChild(button);
         });
-
-        
         startTimer();
     
     } else {
         
-        // displayScore();
+        
     }
 };
 
 function pickAnswer(e){
     const choiceBtn = e.target;
-    // console.log(choiceBtn)
     const par = document.createElement("p");
     const par1 = document.createElement("p");
     par1.classList.add("good");
     par.classList.add("edit");
     const contentPar = document.createElement("div");
     contentPar.classList.add("para-content");
-    
-    
     if (choiceBtn.dataset.correct === "true") {
         choiceBtn.classList.add("correct");
         score+=10;
         par1.innerHTML = "Good Job 😎 🎉🎖️";
         contentPar.append(par1);
-        
-        
     } else {
         choiceBtn.classList.add("incorrect");
         par.innerHTML = "Oops Wrong Answer 😐";
         contentPar.append(par);
-        
-    
     }
 
     quiz.appendChild(contentPar);
 
     displayTotalScore();
-
-    // scoreStorage();
-
-    // pauseTimer();
      clearInterval(myTime);
 
-    //  displayQuestions();
-     
-    
- 
-    
-    
     Array.from(answerButtons.children).forEach(button => {
         if (button.dataset.correct === "true") {
             button.classList.add("correct");
@@ -226,25 +203,21 @@ function removeSets(){
 function displayQuestions(){
     const shuffleElement = document.getElementById("shuffle");
     shuffleElement.textContent = `QUESTION ${currentQuestionNumber + 1} of ${questions.length -40} shuffled from 50`;
-   
 }
 
 function nextPage(){
-  
     if (currentQuestion < questions.length) {
         currentQuestion++;
         resumeTimer()
         showQuiz();
      
     } else {
-        // displayScore();
         nextBtn.innerHTML = "Next";
         nextBtn.addEventListener("click", startQuiz);
 
     }
 
     shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
-
     
     if(currentQuestion === 8 ){
      nextBtn.innerHTML = "Go to Last Question";
@@ -252,11 +225,14 @@ function nextPage(){
     }
     else if(currentQuestion === 9){
         nextBtn.innerHTML = "End Game";
-       
         
     }
     else if(currentQuestion === 4){
         nextBtn.style.backgroundColor = "yellow"
+        const song2Src = new Audio("./music/05. Ken Stage.mp3");
+        // song2Src.play();
+        const song1Src = new Audio("./music/1-01. Title Theme [CPS-1].mp3");
+        // song1Src.pause();
     }
     if(currentQuestion === 10){
         gameOver.style.display = "block";
@@ -275,12 +251,8 @@ function nextPage(){
         
         clearInterval(myTime)
     }
-
-    
-    // viewScores();
+   
 };
-
-
 
 function viewScores(){
     let chartValue = inputName.value;
@@ -326,22 +298,9 @@ function holdTask(){
         pill.classList.add("pass")
         pill.textContent = items
         listScore.appendChild(pill)
-        //  listScore.style.position = "relative";
-        // listScore.style.bottom = "100px"
-    })
-
-     
-    // let copiedData =localStorage.getItem("quiz")
-    //     console.log(JSON.parse(copiedData));
-    //     let passMark = [];
-    //     let parseData = JSON.parse(copiedData);
-    //     parseData.forEach((items)=>{
-    //         let p = document.createElement("p");
-    //         p.classList.add("pass");
-    //         p.innerHTML = items;
         
-            
-    //     })
+    })
+    
 };
 
 function menuPage(){
@@ -372,8 +331,6 @@ function flashScores(){
     scoreName .style.display = "block";
     hallBtn.style.display = "none";
     listScore.style.display = "block";
-   
-   
     let pale =JSON.parse(localStorage.getItem("quiz"))
     pale.forEach((items)=>{
         let pill = document.createElement("p")
@@ -405,10 +362,7 @@ function displayTotalScore(){
 };
 
 function scoreFacts(){
-  
     presentScore.textContent= `Present Score :${score}`
-    
-    
 };
 
 
@@ -424,8 +378,6 @@ function scoreFacts(){
             musicBtn.innerText = "Switch background music 2";
             musicBtn.style.backgroundColor = "pink";
             audioPlayer.src = song2Src;
-            // audioPlayer.currentTime = 0; 
-            // audioPlayer.play();
         } else {
             musicBtn.innerText = "Switch background music 1";
             musicBtn.style.backgroundColor = "#1e90ff";

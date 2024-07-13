@@ -11,9 +11,18 @@
 
   <div class="quiz-container">
       <div class="startup">
-           <div class="down">
-               <h1 id="header">Quiz Category:<br>Computer</h1>
-           </div>
+        <div class="quiz-category">
+            <div class="down">
+                <h1 id="header">Quiz Category:<br>Computer</h1>
+            </div>
+            <div class="button-content">
+             <a id="cta" href="#"><button class="start-btn">let's play!</button></a> 
+              <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
+              <!-- <button id="main-menu"> Andy Main Menu</button> -->
+         </div>
+        </div>
+
+
          <div id="score-chart">
              <div class="chart_head">
                  <h1 id="game-over">GAME OVER 🎉 </h1>
@@ -28,6 +37,7 @@
                              <button  class="btn4"id="main-menu">  Main Menu</button>
                          </div>
                      </div>
+                </div>
              </form>
          </div>
          <div id="head-content">
@@ -44,23 +54,32 @@
              <div class="count-timer">
               <p id="time-piece">Time-Left:00:15</p>
              </div>
-         </div>
+        
          <div id="question-shuffle">
              <p id="shuffle">QUESTION 1 0f 10 shuffled from 50</p>
          </div>
-         <h2 id="question-mark"></h2>
-         <div id="answer-buttons">
-            
-             <!-- Buttons will be dynamically created here -->
+         
+         <div class="question-content">
+             <h2 id="question-mark"></h2>
+             <div id="answer-buttons">
+                
+                 <!-- Buttons will be dynamically created here -->
+             </div>
+
          </div>
+
          <button id="next-btn" style="display: none;">Next</button>
-        
-         <div class="button-content">
+        </div>
+         <!-- <div class="button-content">
              <a id="cta" href="#"><button class="start-btn">let's play!</button></a> 
               <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
               <button id="main-menu"> Andy Main Menu</button>
-         </div>
-     </div> 
+         </div> -->
+
+
+     </div>
+     
+     
   </div>
 
 
