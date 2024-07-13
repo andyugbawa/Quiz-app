@@ -1,3 +1,1 @@
-# Quiz-app
-Quiz App
-andyquiz.netlify.app
+#Quiz App using HTML, CSS AND JAVASCRIPT
