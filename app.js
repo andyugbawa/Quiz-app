@@ -1,5 +1,7 @@
 import { questions } from "./question.js";
 
+console.log("hi")
+
 const startBtn = document.querySelector(".start-btn");
 const hallBtn = document.getElementById("hall-btn");
 const header = document.querySelector("#header");
@@ -47,7 +49,6 @@ hallBtn.addEventListener("click", flashScores);
 menuBtn.addEventListener("click",backToMenu);
 
 function startQuiz(){
-    
     hallBtn.style.display = "none";
     header.style.display = "none";
     startBtn.style.display = "none";
@@ -73,12 +74,10 @@ function startQuiz(){
 
 function countTimer(){
     startTimer()
-    
     if(time === 0){
         clearInterval(myTime);
         timePiece.innerHTML = "Oops Times Up 😐"
-        
-            nextBtn.style.display = "block";
+        nextBtn.style.display = "block";
         Array.from(answerButtons.children).forEach(button => {
             if (button.dataset.correct === "true") {
                 button.classList.add("correct");
@@ -109,24 +108,17 @@ function stopTime(){
             button.disabled = true;
         });
     }
-
-    
-    
 }
      
 function resumeTimer(){
     time = 15; 
     timePiece.innerHTML = "Time-left :" + time;
      myTime = setInterval(stopTime,1000);
-    
-    
 };
 
 function startTimer(){
     time--;
     timePiece.innerHTML = "Time-left :" + time;
-
-    
 }
 
 function showQuiz(){
@@ -150,7 +142,6 @@ function showQuiz(){
     
     } else {
         
-        
     }
 };
 
@@ -173,9 +164,12 @@ function pickAnswer(e){
         contentPar.append(par);
     }
 
+
     quiz.appendChild(contentPar);
 
+
     displayTotalScore();
+
      clearInterval(myTime);
 
     Array.from(answerButtons.children).forEach(button => {
@@ -186,7 +180,6 @@ function pickAnswer(e){
     });
     
     scoreFacts();
-   
     nextBtn.style.display = "block";
     
 };
@@ -230,9 +223,8 @@ function nextPage(){
     else if(currentQuestion === 4){
         nextBtn.style.backgroundColor = "yellow"
         const song2Src = new Audio("./music/05. Ken Stage.mp3");
-        // song2Src.play();
         const song1Src = new Audio("./music/1-01. Title Theme [CPS-1].mp3");
-        // song1Src.pause();
+        
     }
     if(currentQuestion === 10){
         gameOver.style.display = "block";
@@ -274,11 +266,6 @@ function viewScores(){
      menuBtn.style.display = "block";
      menuBtn.style.display = "block";
      headContent.style.display = "block";
-
-    
-
-    //  holdTask();
-
 };
 
 function scoreStorage(){
@@ -287,8 +274,6 @@ function scoreStorage(){
       pole.push(items.textContent)  
     })
     localStorage.setItem("quiz",JSON.stringify(pole))
-
-   
 };
 
 function holdTask(){
@@ -298,7 +283,6 @@ function holdTask(){
         pill.classList.add("pass")
         pill.textContent = items
         listScore.appendChild(pill)
-        
     })
     
 };
@@ -371,7 +355,6 @@ function scoreFacts(){
     const audioPlayer = document.getElementById("audio-player");
     const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
     const song2Src = "./music/05. Ken Stage.mp3";
-
 
     musicBtn.addEventListener("click", () => {
         if (musicBtn.innerText === "Switch background music 1") {

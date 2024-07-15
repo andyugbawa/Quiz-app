@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-#Quiz App using HTML, CSS AND JAVASCRIPT
-=======
+A Quiz-app with series of questions and answers that has a countdown timer that keeps records of your score and performance in the Hall of Fame after finshing the Quiz.
 
->>>>>>> e5e55b563629486a6b098db0c3bfcfa1cfed8722
+https://andyquizapp.netlify.app/.
+
+
