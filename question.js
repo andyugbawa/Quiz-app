@@ -460,9 +460,6 @@ const questions = [
 
 export{questions};
 
-
-
-
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -483,9 +480,7 @@ selectedQuestions.forEach(question => {
 
 function displaySelectedQuestions() {
     selectedQuestions.forEach((question, index) => {
-        // console.log(`${index + 1}. ${question.question}`);
         question.answers.forEach(answer => {
-            // console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
         });
     });
 }
@@ -493,32 +488,3 @@ function displaySelectedQuestions() {
 
 displaySelectedQuestions();
 
-
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-// }
-
-
-
-// shuffleArray(questions);
-
-
-// questions.forEach(question => {
-//     shuffleArray(question.answers);
-// });
-
-
-// function displayQuestionNumber() {
-//     questions.forEach((question, index) => {
-//         console.log(`${index + 1}. ${question.question}`);
-//         question.answers.forEach(answer => {
-//             console.log(`   - ${answer.text} (Correct: ${answer.correct})`);
-//         });
-//     });
-// }
-
-
-// displayQuestionNumber();

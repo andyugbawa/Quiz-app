@@ -70,6 +70,20 @@ function startQuiz(){
     nextBtn.innerHTML = "Next";
     nextBtn.style.backgroundColor = "blue";
     listScore.style.display = "block";
+
+    if (musicBtn.innerText === "Switch background music 1") {
+        musicBtn.innerText = "Switch background music 1";
+        musicBtn.style.backgroundColor = "#1e90ff";
+       
+        audioPlayer.src = song1Src;
+    } else {
+        musicBtn.innerText = "Switch background music 2";
+        musicBtn.style.backgroundColor = "pink";
+        audioPlayer.src = song2Src;
+    }
+          audioPlayer.currentTime = 0; 
+        audioPlayer.play();
+
 }
 
 function countTimer(){
@@ -83,7 +97,6 @@ function countTimer(){
                 button.classList.add("correct");
                 }else{
                 button.classList.add("incorrect");
-
             }
             button.disabled = true;
         });
@@ -163,7 +176,6 @@ function pickAnswer(e){
         par.innerHTML = "Oops Wrong Answer 😐";
         contentPar.append(par);
     }
-
 
     quiz.appendChild(contentPar);
 
@@ -355,7 +367,6 @@ function scoreFacts(){
     const audioPlayer = document.getElementById("audio-player");
     const song1Src = "./music/1-01. Title Theme [CPS-1].mp3";
     const song2Src = "./music/05. Ken Stage.mp3";
-
     musicBtn.addEventListener("click", () => {
         if (musicBtn.innerText === "Switch background music 1") {
             musicBtn.innerText = "Switch background music 2";
