@@ -5,17 +5,13 @@
 
 body{
  background: rgba(3, 3, 57, 0.954);
- 
 }
-
-
 .down{
  display: flex;
  justify-content: center;
  align-items: center;
  padding: 30px 0 0 0;
 }
-
 .startup{
     background: rgb(21,19,27);
     width:70%;
@@ -31,7 +27,6 @@ body{
 #header{
    color:rgb(245, 184, 70); 
 }
-
  .button-content{
     display: flex; 
      justify-content: center; 
@@ -58,8 +53,6 @@ body{
     color: purple;
     font-size: 15px;
 }
-
-
 #answer-buttons{
     position: relative;
     bottom: 100px;
@@ -124,7 +117,6 @@ p{
     font-weight: 800;
     color: red;
     font-size: 25px;
-    
 }
 
 .good{
@@ -135,8 +127,6 @@ p{
     color:blue;
     font-size: 25px;  
 }
-
-
  #countdown{
     position: relative;
     bottom: 189px;
@@ -157,14 +147,11 @@ p{
     display: flex;
     justify-content: center;
     padding: 0px 0px 200px 40px;
-   
 }
 #present-score{
     display: none;
     color:#fff;
 }
-
-
 #question-mark{
     position: relative;
     left:140px;
@@ -188,7 +175,6 @@ p{
     padding-left: 8px;
     border-radius: 20px;
     font-size: 18px;
-
 }
 #timer{
     position: relative;
@@ -313,10 +299,7 @@ p{
     .start-btn{
         cursor: pointer;
     }
-    .button-content{
-      
-        
-    }
+    
     .sound-check{
         padding: 10px 0 5px 280px;
     }
@@ -376,13 +359,9 @@ p{
     flex-direction: row;
     align-items: flex-start;
     padding: 10px 0 0 80px;
-
 }
 
 }
-
-
-
 
 @media (max-width:868px) {
     .startup{
@@ -427,7 +406,6 @@ p{
     bottom:100px;
     font-size: 20px;
     color: red;
-
 }
 .edit{
     position: relative;
@@ -436,7 +414,6 @@ p{
     font-weight: 800;
     color: red;
     font-size: 25px;
-    
 }
 
 .good{
@@ -459,10 +436,14 @@ p{
     padding: 10px 0 0 80px;
 
 }
+}
 
-
-
-
+@media (max-width:567px) {
+    .startup{
+        background: blue;
+        width:288px;
+        max-width: 300px;
+    }
 }
 
 

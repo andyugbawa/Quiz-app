@@ -1,7 +1,5 @@
 import { questions } from "./question.js";
 
-console.log("hi")
-
 const startBtn = document.querySelector(".start-btn");
 const hallBtn = document.getElementById("hall-btn");
 const header = document.querySelector("#header");
@@ -57,29 +55,24 @@ function startQuiz(){
     scoreShown = false;
     currentQuestionNumber = 0;
     myTime = setInterval(countTimer, 1000);
-
     showQuiz();
-
     answerButtons.style.display = "block";
     questionMark.style.display = "block";
     presentScore.textContent= `Present Score :${score}`;
     nextBtn.innerHTML = "Next";
     nextBtn.style.backgroundColor = "blue";
     listScore.style.display = "block";
-
     if (musicBtn.innerText === "Switch background music 1") {
         musicBtn.innerText = "Switch background music 1";
         musicBtn.style.backgroundColor = "#1e90ff";
-       
         audioPlayer.src = song1Src;
     } else {
         musicBtn.innerText = "Switch background music 2";
         musicBtn.style.backgroundColor = "pink";
         audioPlayer.src = song2Src;
     }
-          audioPlayer.currentTime = 0; 
+        audioPlayer.currentTime = 0; 
         audioPlayer.play();
-
 }
 
 function countTimer(){
@@ -97,7 +90,6 @@ function countTimer(){
             button.disabled = true;
         });
     }
-
 }
 
 function stopTime(){
@@ -112,7 +104,6 @@ function stopTime(){
                 button.classList.add("correct");
             }else{
                 button.classList.add("incorrect");
-
             }
             button.disabled = true;
         });
@@ -148,10 +139,7 @@ function showQuiz(){
             answerButtons.appendChild(button);
         });
         startTimer();
-    
-    } else {
-        
-    }
+    } 
 };
 
 function pickAnswer(e){
@@ -174,10 +162,7 @@ function pickAnswer(e){
     }
 
     quiz.appendChild(contentPar);
-
-
     displayTotalScore();
-
      clearInterval(myTime);
 
     Array.from(answerButtons.children).forEach(button => {
@@ -189,7 +174,6 @@ function pickAnswer(e){
     
     scoreFacts();
     nextBtn.style.display = "block";
-    
 };
 
 function removeSets(){
@@ -215,7 +199,6 @@ function nextPage(){
     } else {
         nextBtn.innerHTML = "Next";
         nextBtn.addEventListener("click", startQuiz);
-
     }
 
     shuffleEl.innerHTML = `QUESTION ${numberQuestionShuffle++}  0f 10 shuffled from 50` ;
@@ -226,13 +209,11 @@ function nextPage(){
     }
     else if(currentQuestion === 9){
         nextBtn.innerHTML = "End Game";
-        
     }
     else if(currentQuestion === 4){
         nextBtn.style.backgroundColor = "yellow"
         const song2Src = new Audio("./music/05. Ken Stage.mp3");
         const song1Src = new Audio("./music/1-01. Title Theme [CPS-1].mp3");
-        
     }
     if(currentQuestion === 10){
         gameOver.style.display = "block";
@@ -248,7 +229,6 @@ function nextPage(){
         scoreName.style.display = "block";
         
         holdTask();
-        
         clearInterval(myTime)
     }
    
@@ -329,9 +309,7 @@ function flashScores(){
         pill.classList.add("pass")
         pill.textContent = items
         listScore.appendChild(pill)
-       
     })
-
 }
 
 function backToMenu(){
