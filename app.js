@@ -1,6 +1,6 @@
 import { questions } from "./question.js";
 
-const startBtn = document.querySelector(".start-btn");
+const playBtn = document.getElementById("play-btn");
 const hallBtn = document.getElementById("hall-btn");
 const header = document.querySelector("#header");
 const presentScore = document.getElementById("present-score");
@@ -36,7 +36,7 @@ let figureScore = 0;
 let myTime;
 
 saveScore.addEventListener("click",viewScores);
-startBtn.addEventListener("click", startQuiz);
+playBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click",nextPage);
 mainMenu.addEventListener("click",menuPage);
 hallBtn.addEventListener("click", flashScores);
@@ -45,7 +45,7 @@ menuBtn.addEventListener("click",backToMenu);
 function startQuiz(){
     hallBtn.style.display = "none";
     header.style.display = "none";
-    startBtn.style.display = "none";
+    playBtn.style.display = "none";
     presentScore.style.display = "block";
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
@@ -285,7 +285,7 @@ function menuPage(){
     clearInterval(myTime);
   
     header.style.display = "block";
-    startBtn.style.display = "block";
+    playBtn.style.display = "block";
     hallBtn.style.display = "block";
     gameOver.style.display = "none";
     totalScore.style.display = "none";
@@ -298,7 +298,7 @@ function menuPage(){
 
 function flashScores(){
     header.style.display = "none";
-    startBtn.style.display = "none";
+    playBtn.style.display = "none";
     mainMenu.style.display = "block";
     scoreName .style.display = "block";
     hallBtn.style.display = "none";
@@ -318,7 +318,7 @@ function backToMenu(){
     scoreName.style.display = "none";
     listScore.style.display = "none"
     header.style.display = "block";
-    startBtn.style.display = "block";
+    playBtn.style.display = "block";
     hallBtn.style.display = "block";
     menuBtn.style.display  = "none"
     header.style.color = "blue";

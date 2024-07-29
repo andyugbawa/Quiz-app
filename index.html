@@ -11,18 +11,28 @@
 
 <div class="quiz-container">
     <div class="startup">
-        <div class="quiz-category">
+        <div class="button-content">
+            <button class="start-btn" id="play-btn">let's play!</button> 
+            <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
+        </div>
+
+
+        <div class="down">
+            <h1 id="header">Quiz Category:<br>Computer</h1>
+        </div>
+
+       
+        <!-- <div class="quiz-category">
             <div class="down">
                 <h1 id="header">Quiz Category:<br>Computer</h1>
             </div>
-            <div class="pole">
-                <div class="button-content">
-                    <a id="cta" href="#"><button class="start-btn">let's play!</button></a> 
-                    <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
-                </div>
-
+            <div class="button-content">
+                <a id="cta" href="#"><button class="start-btn">let's play!</button></a> 
+                <button class="start-btn" id="hall-btn">  Hall of Fame!</button>
             </div>
-        </div>
+        </div> -->
+
+
         <div id="score-chart">
             <div class="chart_head">
                 <h1 id="game-over">GAME OVER 🎉 </h1>
@@ -58,7 +68,10 @@
             </div>
             <div class="question-content">
                 <h2 id="question-mark"></h2>
-                <div id="answer-buttons">
+                <div class="answer-content">
+                    <div id="answer-buttons">
+                    </div>
+
                 </div>
                 <button id="next-btn" style="display: none;">Next</button>
             </div>

@@ -6,11 +6,19 @@
 body{
  background: rgba(3, 3, 57, 0.954);
 }
+.quiz-category{
+    /* display:flex; */
+    /* justify-content: center; */
+    /* position: relative;
+    z-index: 1; */
+}
 .down{
- display: flex;
- justify-content: center;
- align-items: center;
- padding: 30px 0 0 0;
+ /* display: flex; */
+ /* justify-content: center; */
+ /* align-items: center; */
+ /* padding: 30px 0 0 0; */
+ 
+ 
 }
 .startup{
     background: rgb(21,19,27);
@@ -28,11 +36,13 @@ body{
    color:rgb(245, 184, 70); 
 }
  .button-content{
-    display: flex; 
-     justify-content: center; 
-     align-items: center;
-     padding: 30px 0px 0 20px; 
-     gap: 10px; 
+    /* display: flex;  */
+     /* justify-content: center;  */
+     /* align-items: center; */
+     /* padding: 30px 0px 0 20px;  */
+     /* gap: 10px;  */
+     /* position: relative;
+     top:160px; */
  }
  .start-btn{
     width:170px;
@@ -122,7 +132,7 @@ p{
 .good{
     position: relative;
     left:380px;
-    bottom: 10px;
+    bottom: 100px;
     font-weight: 800;
     color:blue;
     font-size: 25px;  
@@ -287,17 +297,25 @@ p{
 }
 
 @media (max-width:768px) {
+
+    .quiz-container{
+        width: 100%;
+        overflow-x: hidden;
+       
+    }
+
     .startup{
         width: 100%;
         max-width: 700px;
         background-color: green;
+       
 
     }
     .start-btn{
         cursor: pointer;
     }
     .button-content{
-        display: flex;
+        /* display: flex; */
         position: relative;
         
     }
@@ -318,10 +336,12 @@ p{
         position: relative;
         bottom: 140px;
         left:-9px;
+        
     }
     .question-content{
         position: relative;
-        left:20px;
+        /* right:90px; */
+        /* display:none; */
     }
     
 #question-mark{
@@ -331,10 +351,14 @@ p{
     font-size: 20px;
     color: red;
 }
+.answer-content{
+    position: relative;
+    right:90px;
+}
 .edit{
     position: relative;
-    left:90px;
-    bottom: 10px;
+    left:50px;
+    bottom: -30px;
     font-weight: 800;
     color: red;
     font-size: 25px;
@@ -342,8 +366,8 @@ p{
 
 .good{
     position: relative;
-    left:80px;
-    bottom: 10px;
+    left:50px;
+    bottom: -30px;
     font-weight: 800;
     color:blue;
     font-size: 25px;  
@@ -362,6 +386,20 @@ p{
 }
 .sound-check{
     padding: 10px 0 10px 280px;
+}
+#shuffle{
+    color:blue;
+    position: relative;
+    top:30px;
+}
+#time-piece{
+    position: relative;
+    top:40px;
+    left:-100px;
+}
+#present-score{
+    position: relative;
+    top:50px; 
 }
 
 }
