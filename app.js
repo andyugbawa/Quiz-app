@@ -35,20 +35,22 @@ let numberQuestionShuffle = 2;
 let figureScore = 0;
 let myTime;
 
-saveScore.addEventListener("click",viewScores);
 playBtn.addEventListener("click", startQuiz);
+hallBtn.addEventListener("click", flashScores);
+saveScore.addEventListener("click",viewScores);
 nextBtn.addEventListener("click",nextPage);
 mainMenu.addEventListener("click",menuPage);
-hallBtn.addEventListener("click", flashScores);
 menuBtn.addEventListener("click",backToMenu);
 
 function startQuiz(){
+    console.log("PlayBtn")
     hallBtn.style.display = "none";
     header.style.display = "none";
     playBtn.style.display = "none";
     presentScore.style.display = "block";
     timePiece.style.display = "block";
     shuffleEl.style.display = "block";
+    
     
     currentQuestion = 0;
     score = 0;
@@ -62,6 +64,7 @@ function startQuiz(){
     nextBtn.innerHTML = "Next";
     nextBtn.style.backgroundColor = "blue";
     listScore.style.display = "block";
+
     if (musicBtn.innerText === "Switch background music 1") {
         musicBtn.innerText = "Switch background music 1";
         musicBtn.style.backgroundColor = "#1e90ff";
@@ -191,6 +194,7 @@ function displayQuestions(){
 }
 
 function nextPage(){
+    console.log("NextPage")
     if (currentQuestion < questions.length) {
         currentQuestion++;
         resumeTimer()
@@ -235,6 +239,7 @@ function nextPage(){
 };
 
 function viewScores(){
+    console.log("SaveScore")
     let chartValue = inputName.value;
     let scoreEl = document.createElement("p");
     scoreEl.textContent = chartValue;
@@ -276,6 +281,7 @@ function holdTask(){
 };
 
 function menuPage(){
+    console.log("MenuPage")
     listScore.innerHTML = "";
     currentQuestion = 0;
     score = 0;
@@ -297,9 +303,10 @@ function menuPage(){
 }
 
 function flashScores(){
+    hallFame.style.display = "block";
     header.style.display = "none";
     playBtn.style.display = "none";
-    mainMenu.style.display = "block";
+    menuBtn.style.display = "block";
     scoreName .style.display = "block";
     hallBtn.style.display = "none";
     listScore.style.display = "block";
