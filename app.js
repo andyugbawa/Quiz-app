@@ -43,7 +43,6 @@ mainMenu.addEventListener("click",menuPage);
 menuBtn.addEventListener("click",backToMenu);
 
 function startQuiz(){
-    console.log("PlayBtn")
     hallBtn.style.display = "none";
     header.style.display = "none";
     playBtn.style.display = "none";
@@ -194,7 +193,6 @@ function displayQuestions(){
 }
 
 function nextPage(){
-    console.log("NextPage")
     if (currentQuestion < questions.length) {
         currentQuestion++;
         resumeTimer()
@@ -239,7 +237,6 @@ function nextPage(){
 };
 
 function viewScores(){
-    console.log("SaveScore")
     let chartValue = inputName.value;
     let scoreEl = document.createElement("p");
     scoreEl.textContent = chartValue;
@@ -271,6 +268,8 @@ function scoreStorage(){
 
 function holdTask(){
     let pale =JSON.parse(localStorage.getItem("quiz"))
+    pale.sort((a,b)=>b-a)
+    listScore.innerHTML = "";
     pale.forEach((items)=>{
         let pill = document.createElement("p")
         pill.classList.add("pass")
@@ -281,7 +280,6 @@ function holdTask(){
 };
 
 function menuPage(){
-    console.log("MenuPage")
     listScore.innerHTML = "";
     currentQuestion = 0;
     score = 0;
@@ -311,6 +309,8 @@ function flashScores(){
     hallBtn.style.display = "none";
     listScore.style.display = "block";
     let pale =JSON.parse(localStorage.getItem("quiz"))
+    pale.sort((a,b)=>b-a);
+    listScore.innerHTML ="";
     pale.forEach((items)=>{
         let pill = document.createElement("p")
         pill.classList.add("pass")
