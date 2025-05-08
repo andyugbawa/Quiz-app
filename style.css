@@ -411,13 +411,14 @@ font-size: 25px;
     .good{
         position: relative;
         top:-800px;
-        left:150px;
+        left:0px;
     }
 
     .edit{
         position: relative;
-        top:-790px;
-        left:110px;
+        top:-850px;
+        left:0px;
+        font-size: 15px;
     }
     .question-layout{
         margin-top: 40px;
