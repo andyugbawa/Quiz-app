@@ -305,7 +305,7 @@ font-size: 25px;
     }
 
     .startup{
-        width: 100%;
+        width: 600px;
         max-width: 700px;
        
     }
@@ -319,6 +319,9 @@ font-size: 25px;
     .playscore-set{
         padding: 0 0 20px 300px;
         
+    }
+    .hall-score{
+       padding: 0 30px 0 0; 
     }
     #time-piece{
         position: relative;
@@ -340,7 +343,7 @@ font-size: 25px;
     position: relative;
     left:270px;
     bottom: 300px;
-    top:-350px;
+    top:-450px;
     font-weight: 800;
     color: red;
     font-size: 25px;
@@ -349,8 +352,7 @@ font-size: 25px;
 .good{
     position: relative;
     left:300px;
-    bottom: -50px;
-    top:-380px;
+    top:-430px;
     font-weight: 800;
     color:blue;
     font-size: 25px;  
