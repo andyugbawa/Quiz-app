@@ -266,9 +266,15 @@ font-size: 25px;
     color:aqua;
     
 }
+.fame-hall{
+    margin-bottom: 30px;
+}
+.backmain-btn{
+    margin-bottom: 30px;
+}
 #menu-btn{
     display: none;
-    margin: 5px 0 0  60px;
+    /* margin: 5px 0 0  60px; */
 }
 #head-content{
   padding: 10px 0 0 300px; 
@@ -374,12 +380,15 @@ font-size: 25px;
 
 }
 
+@media (max-width:500px) {
 
-@media (max-width:600px) {
     .startup{
-        width:580px;
+        width:300px;
         max-width: 450px;
         overflow-x: visible;
+    }
+    .button-content{
+        padding: 30px  20px 0 0;
     }
     .start-btn{
         width:150px;
@@ -389,7 +398,7 @@ font-size: 25px;
         padding: 10px 0 10px 164px;
     }
     .playscore-set{
-        padding: 0 0 0 150px;
+        padding: 0 0 0 80px;
     }
 
 
@@ -419,14 +428,22 @@ font-size: 25px;
         flex-direction: column;
         width:300px;
         height: 550px;
-         position: relative;
-        left:140px; 
+        padding: 0 0 0 70px;
+         /* position: relative; */
+        /* left:140px;  */
     }
     .save-button{
         padding: 0 0px 0 0 ;
         position: relative;
         right: 200px;
         top: 90px;
+    }
+   
+
+    .btn-content{
+       position: relative; 
+       right: 190px;
+       bottom: 50px;
     }
     #head-content{
         padding: 100px 0 0 100px;
