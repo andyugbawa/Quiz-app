@@ -402,6 +402,9 @@ font-size: 25px;
     .playscore-set{
         padding: 0 0 0 80px;
     }
+    .hall-score{
+        padding: 0 0 0 130px;
+    }
 
 
     #shuffle{
